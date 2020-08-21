@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name= "card_type_detail")
+@Table(name= "Card_type_detail")
 public class CardType {
 	
 	
@@ -22,14 +22,14 @@ public class CardType {
 	private int id;
 	
 	
-	@Column(name = "type" )
+	@Column(name = "CARD_TYPE" )
 	private String type;
 	
-	@Column(name = "type" )
+	@Column(name = "MAXIMUM_LIMIT" )
 	private double maximumLimit;
 	
 	
-	@Column(name = "joining_fee")
+	@Column(name = "JOINING_FEE")
 	private double joiningFee;
 	
 	
