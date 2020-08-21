@@ -23,6 +23,9 @@ public class AllotedCard {
 	
 	@Column(name = "card_id")
 	private int cardId;
+
+	@Column(name = "user_id")
+	private int userid;
 	
 	@Column(name = "card_cvv_no")
 	private int cardCvvNo;
@@ -39,8 +42,7 @@ public class AllotedCard {
 	@Column(name ="card_credit_remaining")
 	private double cardCreditRemaining;
 	
-	@Column(name ="user_id")
-	private int userId;
+	
 	
 	@Column(name ="card_activation_status")
 	private boolean cardActivationStatus;
@@ -50,6 +52,22 @@ public class AllotedCard {
 	@JoinColumn(name = "card_id")
 	private CardType cardType;
 
+
+	public int getUserid() {
+		return userid;
+	}
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+	public CardType getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(CardType cardType) {
+		this.cardType = cardType;
+	}
 
 	public int getAllocatedCardId() {
 		return allocatedCardId;
@@ -107,13 +125,7 @@ public class AllotedCard {
 		this.cardCreditRemaining = cardCreditRemaining;
 	}
 
-	public int getUserId() {
-		return userId;
-	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
 
 	public boolean isCardActivationStatus() {
 		return cardActivationStatus;
