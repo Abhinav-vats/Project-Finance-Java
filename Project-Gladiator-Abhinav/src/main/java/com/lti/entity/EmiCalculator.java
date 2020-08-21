@@ -3,8 +3,6 @@ package com.lti.entity;
 public class EmiCalculator {
 
 	
-	
-	
 		private int p;//amount
 		private float r;//rate
 		private int n;
