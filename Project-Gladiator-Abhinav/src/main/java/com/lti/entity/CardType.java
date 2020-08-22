@@ -1,18 +1,17 @@
 package com.lti.entity;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name= "card_type_detail")
 public class CardType {
-	
 	
 	@Id
 	@GeneratedValue
@@ -30,7 +29,9 @@ public class CardType {
 	@Column(name = "JOINING_FEE")
 	private double joiningFee;
 	
-
+	@OneToMany(mappedBy = "cardType" , cascade = CascadeType.ALL)
+	
+	
 	
 	public int getId() {
 		return id;

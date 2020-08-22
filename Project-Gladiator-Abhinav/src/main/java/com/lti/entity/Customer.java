@@ -68,8 +68,9 @@ public class Customer {
 	
 	
 	@OneToMany(mappedBy = "customer" , cascade = CascadeType.ALL)
+	//yaha pe change hhoga 
 	private List<AllotedCard> alloctedCard;
-
+	
 	public int getId() {
 		return id;
 	}
