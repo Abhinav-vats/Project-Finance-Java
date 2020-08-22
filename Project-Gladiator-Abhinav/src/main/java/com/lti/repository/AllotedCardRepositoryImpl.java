@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import com.lti.entity.AllotedCard;
+import com.lti.entity.Customer;
 
 
 public class AllotedCardRepositoryImpl implements AllotedCardRepository {
@@ -16,19 +17,19 @@ public class AllotedCardRepositoryImpl implements AllotedCardRepository {
 	
 	
 	@Transactional
-	public void save(AllotedCard allotedCard) {
-		entityManager.merge(allotedCard);
-
+	public void updateCustomer(Customer customer) {
+		entityManager.merge(customer);
 	}
-
-	@Override
-	public AllotedCard findById(int allocatedCardId) {
-		return entityManager.find(AllotedCard .class, allocatedCardId);
-	}
+	
 
 	@Override
-	public List<AllotedCard> findAll() {
-		return entityManager.createNamedQuery("fetch-all").getResultList();
+	public Customer findById(int id) {
+		return entityManager.find(Customer.class, id);
 	}
+
+
+
+	
+
 
 }
