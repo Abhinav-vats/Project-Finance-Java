@@ -29,8 +29,7 @@ public class CardType {
 	@Column(name = "JOINING_FEE")
 	private double joiningFee;
 	
-	@OneToMany(mappedBy = "cardType" , cascade = CascadeType.ALL)
-	
+	//@OneToMany(mappedBy = "cardType" , cascade = CascadeType.ALL)
 	
 	
 	public int getId() {
