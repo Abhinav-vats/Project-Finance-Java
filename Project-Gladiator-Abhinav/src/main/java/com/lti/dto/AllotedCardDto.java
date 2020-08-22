@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class AllotedCardDto {
 	private int allocatedCardId;
+	private int user_id;
 	private int cardId;
 	private int cardCvvNo;
 	private int cardNo;
@@ -12,6 +13,14 @@ public class AllotedCardDto {
 	private double cardCreditRemaining;
 	private int userId;
 	private boolean cardActivationStatus;
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
 
 	public int getAllocatedCardId() {
 		return allocatedCardId;
