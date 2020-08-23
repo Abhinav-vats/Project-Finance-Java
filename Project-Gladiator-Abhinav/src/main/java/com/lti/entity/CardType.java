@@ -1,6 +1,9 @@
 package com.lti.entity;
 
 
+
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +35,8 @@ public class CardType {
 	@Column(name = "JOINING_FEE")
 	private double joiningFee;
 	
-	//@OneToMany(mappedBy = "cardType" , cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cardType" , cascade = CascadeType.ALL)
+	private List<AllotedCard> allotedCards;
 	
 	
 	public int getId() {
@@ -46,6 +50,12 @@ public class CardType {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public List<AllotedCard> getAllotedCards() {
+		return allotedCards;
+	}
+	public void setAllotedCards(List<AllotedCard> allotedCards) {
+		this.allotedCards = allotedCards;
 	}
 	public double getMaximumLimit() {
 		return maximumLimit;
