@@ -6,6 +6,7 @@ import com.lti.dto.CustomerDto;
 import com.lti.dto.CustomerUpdateDTO;
 import com.lti.entity.Customer;
 import com.lti.service.exception.CustomerServiceException;
+import com.lti.status.UsernameStatus;
 
 public interface CustomerService {
 	
@@ -22,6 +23,8 @@ public interface CustomerService {
 	
 	
 	
+	
+	UsernameStatus checkUsernameAvailability(String username) throws  CustomerServiceException;
 	
 	
 

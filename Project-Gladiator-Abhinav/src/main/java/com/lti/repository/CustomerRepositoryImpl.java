@@ -1,7 +1,11 @@
 package com.lti.repository;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
+import java.util.Base64;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,6 +23,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	@Transactional
 	public void addCustomer(Customer customer) {
+		String password = customer.getPassword();
+		String encodedPassword = Base64.getEncoder().encodeToString(password.getBytes());
+		customer.setPassword(encodedPassword);
 		entityManager.merge(customer);
 
 	}
@@ -31,6 +38,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 				.setParameter("em", email)
 				.getSingleResult()==1?true:false;
 	}
+
 	@Override
 	public boolean isPresent(int id) {
 		
@@ -67,6 +75,18 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	}
 	
 */
+
+	
+	public boolean isUsernameAvailable(String username) {
+		
+		return (Long) entityManager
+				.createQuery("select count(c.id) from Customer as c where c.username = :un")
+				.setParameter("un", username)
+				.getSingleResult()==0?true:false;
+		
+	}
+	
+
 	
 
 }

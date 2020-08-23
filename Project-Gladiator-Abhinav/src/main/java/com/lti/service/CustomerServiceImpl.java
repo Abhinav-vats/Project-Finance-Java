@@ -9,6 +9,7 @@ import com.lti.dto.CustomerUpdateDTO;
 import com.lti.entity.Customer;
 import com.lti.repository.CustomerRepository;
 import com.lti.service.exception.CustomerServiceException;
+import com.lti.status.UsernameStatus;
 
 
 @Service
@@ -26,6 +27,7 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new CustomerServiceException("Customer Already Registered");
 		
 	}
+
 
 
 	public List<Customer> getAllUser() throws CustomerServiceException{
@@ -60,6 +62,27 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 	
 	
+
+	@Override
+	public UsernameStatus checkUsernameAvailability(String username) throws  CustomerServiceException {
+		UsernameStatus usernameStatus = new UsernameStatus();
+		if(customerRepository.isUsernameAvailable(username)) {
+			
+			usernameStatus.setStatus(100);
+			usernameStatus.setMessage("Username available");
+			return usernameStatus;
+		}
+		else {
+			usernameStatus.setStatus(104);
+			usernameStatus.setMessage("Username Not Available, please try new username");
+			return usernameStatus;
+		}
+			
+		
+			
+	}
+
+
 
 	
 

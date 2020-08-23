@@ -1,6 +1,9 @@
 package com.lti.controller;
 
+
 import java.util.List;
+
+
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +19,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.lti.controller.CustomerController.CustomerStatus.CustomerStatusType;
-import com.lti.controller.ProductController.ProductStatus;
+
 import com.lti.dto.CustomerDto;
 import com.lti.entity.Customer;
 import com.lti.entity.Product;
 import com.lti.service.CustomerService;
 import com.lti.service.exception.CustomerServiceException;
+
 import com.lti.service.exception.ProductServiceException;
+
+import com.lti.status.CustomerStatus;
+import com.lti.status.UserStatus;
+import com.lti.status.UsernameStatus;
+
 
 @RestController
 @CrossOrigin
@@ -40,53 +48,31 @@ public class CustomerController {
 			customerService.register(customer);
 			
 			CustomerStatus status = new CustomerStatus();
-			status.setStatus(CustomerStatusType.SUCCESS);
+			status.setStatus(100);
 			status.setMessage("Registration Successfull");
 			return status;
 			
 		}
 		catch(CustomerServiceException e) {
 			CustomerStatus status = new CustomerStatus();
-			status.setStatus(CustomerStatusType.FAILURE);
+			status.setStatus(101);
 			status.setMessage(e.getMessage());
 			return status;
 		}
 	}
 	
-public static class CustomerStatus{
-		
-		private CustomerStatusType status;
-		private String message;
-		
-		
-		
-		public CustomerStatusType getStatus() {
+	@PostMapping(path= "/checkusername", consumes = "text/plain")
+	public UsernameStatus checkUsernameAvailability(@RequestBody String username) {
+		try {
+			return  customerService.checkUsernameAvailability(username);	
+		}
+		catch(CustomerServiceException e) {
+			UsernameStatus status = new UsernameStatus();
+			status.setStatus(102);
+			status.setMessage(e.getMessage());
 			return status;
 		}
 
-
-
-		public String getMessage() {
-			return message;
-		}
-
-
-
-		public void setStatus(CustomerStatusType status) {
-			this.status = status;
-		}
-
-
-
-		public void setMessage(String message) {
-			this.message = message;
-		}
-
-
-
-		public static enum CustomerStatusType{
-			SUCCESS, FAILURE;
-		}
 		
 		
 	}
@@ -108,38 +94,9 @@ public UserStatus indexDisplay() throws CustomerServiceException {
 		stat.setStatus(101);
 		stat.setMessage(e.getMessage());
 		return stat;
-	}
-	
-	
-	
-	
-	
-}
 
-public static class UserStatus{
-	private int status;
-	private String message;
-	private List<Customer> userList;
-	public int getStatus() {
-		return status;
 	}
-	public String getMessage() {
-		return message;
-	}
-	public List<Customer> getUserList() {
-		return userList;
-	}
-	public void setStatus(int status) {
-		this.status = status;
-	}
-	public void setMessage(String message) {
-		this.message = message;
-	}
-	public void setUserList(List<Customer> userList) {
-		this.userList = userList;
-	}
-	
-	
+
 }
 
 
@@ -159,18 +116,16 @@ public CustomerStatus update(@RequestBody CustomerDto customerDto) {
 		customerService.register(customer);
 		
 		CustomerStatus status = new CustomerStatus();
-		status.setStatus(CustomerStatusType.SUCCESS);
+	
 		status.setMessage("Updated Successfull");
 		return status;
 		
 	}
 	catch(CustomerServiceException e) {
 		CustomerStatus status = new CustomerStatus();
-		status.setStatus(CustomerStatusType.FAILURE);
 		status.setMessage(e.getMessage());
 		return status;
 	}
+
 }
-
-
 }
