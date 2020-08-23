@@ -1,5 +1,8 @@
 package com.lti.repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -28,5 +31,42 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 				.setParameter("em", email)
 				.getSingleResult()==1?true:false;
 	}
+	@Override
+	public boolean isPresent(int id) {
+		
+		return (Long) entityManager
+				.createQuery("select count(c.id) from Customer as c where c.id= :i")
+				.setParameter("i", id)
+				.getSingleResult()==1?true:false;
+	}
+	
+
+	@Transactional
+	public List<Customer> getAllUser() {
+	return entityManager.createNamedQuery("fetch-all").getResultList();
+		
+	}
+	
+	@Transactional
+	public long countCustomer() {
+		return (Long) entityManager
+				.createQuery("select count(c.id) from customer_user_detail as c")
+				.getSingleResult();
+	}
+
+	
+	@Override
+	public int deleteById(int id) {
+		return (int) entityManager
+				.createQuery("select count(c.id) from customer_user_detail as c")
+				.getSingleResult();
+	}
+/*
+	public Customer findById(int id) {
+		return entityManager.find(Customer.class,id);
+	}
+	
+*/
+	
 
 }
