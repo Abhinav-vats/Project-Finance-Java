@@ -21,12 +21,6 @@ public class AllotedCard {
 	@Column(name = "id" )
 	private int allocatedCardId;
 	
-	@Column(name = "card_id")
-	private int cardId;
-
-	@Column(name = "user_id")
-	private int userid;
-	
 	@Column(name = "card_cvv_no")
 	private int cardCvvNo;
 	
@@ -52,13 +46,16 @@ public class AllotedCard {
 	@JoinColumn(name = "card_id")
 	private CardType cardType;
 
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private Customer customer;
 
-	public int getUserid() {
-		return userid;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public CardType getCardType() {
@@ -77,13 +74,7 @@ public class AllotedCard {
 		this.allocatedCardId = allocatedCardId;
 	}
 
-	public int getCardId() {
-		return cardId;
-	}
-
-	public void setCardId(int cardId) {
-		this.cardId = cardId;
-	}
+	
 
 	public int getCardCvvNo() {
 		return cardCvvNo;

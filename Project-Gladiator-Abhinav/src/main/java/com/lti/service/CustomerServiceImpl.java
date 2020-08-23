@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.lti.entity.Customer;
 import com.lti.repository.CustomerRepository;
 import com.lti.service.exception.CustomerServiceException;
+import com.lti.status.UsernameStatus;
 
 
 @Service
@@ -26,12 +27,22 @@ public class CustomerServiceImpl implements CustomerService {
 
 
 	@Override
-	public String checkUsernameAvailability(String username) throws  CustomerServiceException {
+	public UsernameStatus checkUsernameAvailability(String username) throws  CustomerServiceException {
+		UsernameStatus usernameStatus = new UsernameStatus();
 		if(customerRepository.isUsernameAvailable(username)) {
-			return "Username available";
+			
+			usernameStatus.setStatus(100);
+			usernameStatus.setMessage("Username available");
+			return usernameStatus;
 		}
-		else
-			return "Username Not Available, please try new username"; 
+		else {
+			usernameStatus.setStatus(104);
+			usernameStatus.setMessage("Username Not Available, please try new username");
+			return usernameStatus;
+		}
+			
+		
+			
 	}
 
 

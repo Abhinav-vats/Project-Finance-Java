@@ -15,6 +15,7 @@ import com.lti.entity.Customer;
 import com.lti.service.CustomerService;
 import com.lti.service.exception.CustomerServiceException;
 import com.lti.status.CustomerStatus;
+import com.lti.status.UsernameStatus;
 
 @RestController
 @CrossOrigin
@@ -45,16 +46,12 @@ public class CustomerController {
 	}
 	
 	@PostMapping(path= "/checkusername", consumes = "text/plain")
-	public CustomerStatus checkUsernameAvailability(@RequestBody String username) {
+	public UsernameStatus checkUsernameAvailability(@RequestBody String username) {
 		try {
-			String message = customerService.checkUsernameAvailability(username);
-			CustomerStatus status = new CustomerStatus();
-			status.setStatus(100);
-			status.setMessage(message);
-			return status;
+			return  customerService.checkUsernameAvailability(username);	
 		}
 		catch(CustomerServiceException e) {
-			CustomerStatus status = new CustomerStatus();
+			UsernameStatus status = new UsernameStatus();
 			status.setStatus(102);
 			status.setMessage(e.getMessage());
 			return status;

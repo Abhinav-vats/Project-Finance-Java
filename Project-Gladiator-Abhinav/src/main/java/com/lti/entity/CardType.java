@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name= "Card_type_detail")
+@Table(name= "card_type_detail")
 public class CardType {
 	
 	
@@ -33,7 +33,7 @@ public class CardType {
 	private double joiningFee;
 	
 	
-	@OneToMany(mappedBy = "card_type_detail", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "cardType", cascade = CascadeType.ALL)
 	private List<AllotedCard> alloctedCard;
 	
 	public int getId() {

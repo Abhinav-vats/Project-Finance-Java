@@ -1,12 +1,15 @@
 package com.lti.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -61,6 +64,10 @@ public class Customer {
 	
 	@Column(name = "is_active")
 	private String isActive;
+	
+	
+	@OneToMany(mappedBy = "customer" , cascade = CascadeType.ALL)
+	private List<AllotedCard> alloctedCard;
 
 	public int getId() {
 		return id;
