@@ -1,5 +1,7 @@
 package com.lti.repository;
 
+import java.util.Base64;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -16,6 +18,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	@Transactional
 	public void addCustomer(Customer customer) {
+		String password = customer.getPassword();
+		String encodedPassword = Base64.getEncoder().encodeToString(password.getBytes());
+		customer.setPassword(encodedPassword);
 		entityManager.merge(customer);
 
 	}
