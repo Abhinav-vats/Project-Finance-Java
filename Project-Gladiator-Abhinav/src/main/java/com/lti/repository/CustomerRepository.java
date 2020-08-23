@@ -7,5 +7,7 @@ public interface CustomerRepository {
 	void addCustomer(Customer customer);
 	
 	boolean isCustomerAvailable(String email);
+	
+	public boolean isUsernameAvailable(String username);
 
 }

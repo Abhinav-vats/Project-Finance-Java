@@ -25,6 +25,16 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 
+	@Override
+	public String checkUsernameAvailability(String username) throws  CustomerServiceException {
+		if(customerRepository.isUsernameAvailable(username)) {
+			return "Username available";
+		}
+		else
+			return "Username Not Available, please try new username"; 
+	}
+
+
 	
 
 }

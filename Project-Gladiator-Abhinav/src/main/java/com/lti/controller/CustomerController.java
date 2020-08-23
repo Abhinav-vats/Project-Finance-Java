@@ -1,5 +1,7 @@
 package com.lti.controller;
 
+import java.sql.SQLException;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,6 +39,23 @@ public class CustomerController {
 		catch(CustomerServiceException e) {
 			CustomerStatus status = new CustomerStatus();
 			status.setStatus(101);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+	}
+	
+	@PostMapping(path= "/checkusername", consumes = "text/plain")
+	public CustomerStatus checkUsernameAvailability(@RequestBody String username) {
+		try {
+			String message = customerService.checkUsernameAvailability(username);
+			CustomerStatus status = new CustomerStatus();
+			status.setStatus(100);
+			status.setMessage(message);
+			return status;
+		}
+		catch(CustomerServiceException e) {
+			CustomerStatus status = new CustomerStatus();
+			status.setStatus(102);
 			status.setMessage(e.getMessage());
 			return status;
 		}

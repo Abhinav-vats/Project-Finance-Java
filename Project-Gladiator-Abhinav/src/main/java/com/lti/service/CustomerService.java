@@ -7,6 +7,8 @@ public interface CustomerService {
 	
 	void register(Customer customer) throws CustomerServiceException;
 	
+	String checkUsernameAvailability(String username) throws  CustomerServiceException;
+	
 	
 
 }

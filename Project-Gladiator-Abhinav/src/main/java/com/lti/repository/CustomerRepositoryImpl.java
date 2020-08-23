@@ -28,5 +28,14 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 				.setParameter("em", email)
 				.getSingleResult()==1?true:false;
 	}
+	
+	public boolean isUsernameAvailable(String username) {
+		
+		return (Long) entityManager
+				.createQuery("select count(c.id) from Customer as c where c.username = :un")
+				.setParameter("un", username)
+				.getSingleResult()==0?true:false;
+		
+	}
 
 }
