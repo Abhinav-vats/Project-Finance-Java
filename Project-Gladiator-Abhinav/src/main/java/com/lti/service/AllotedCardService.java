@@ -17,7 +17,7 @@ public class AllotedCardService {
 		
 		//added
 		//customer class mai isActive attribute ko public karna hoga, the ye error jayega 
-		c.isActive = "true";
+		c.setIsActive("true");
 		allotedCardRepository.updateCustomer(c);
 		return c.getCardType();
 	}
