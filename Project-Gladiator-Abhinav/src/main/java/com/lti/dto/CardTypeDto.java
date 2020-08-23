@@ -4,10 +4,7 @@ package com.lti.dto;
 
 public class CardTypeDto {
 
-	
-	
 	private int id;
-	
 	
 	private String type;
 

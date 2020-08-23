@@ -5,20 +5,17 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQuery;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 @Entity
 @Table(name= "alloted_card_detail")
 @NamedNativeQuery(name = "fetch-all", query = "select a from AllotedCard as a")
 public class AllotedCard {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "alloted_card_seq")
-	@SequenceGenerator(sequenceName = "alloted_card_seq", allocationSize = 1, name = "alloted_card_seq")
+	@GeneratedValue
 	@Column(name = "id" )
 	private int allocatedId;
 	
