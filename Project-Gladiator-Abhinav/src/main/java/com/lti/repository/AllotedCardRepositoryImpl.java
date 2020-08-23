@@ -20,6 +20,11 @@ public class AllotedCardRepositoryImpl implements AllotedCardRepository {
 	
 	
 	@Transactional
+	public void updatealloted(AllotedCard allotedcard) {
+		entityManager.merge(allotedcard);
+		
+	}
+	@Transactional
 	public void updateCustomer(Customer customer) {
 		entityManager.merge(customer);
 	}
@@ -35,6 +40,8 @@ public class AllotedCardRepositoryImpl implements AllotedCardRepository {
 	public Customer findById(int id) {
 		return entityManager.find(Customer.class, id);
 	}
+	
+	
 
 
 

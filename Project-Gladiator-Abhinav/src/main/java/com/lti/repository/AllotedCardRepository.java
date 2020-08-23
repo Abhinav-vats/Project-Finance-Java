@@ -11,8 +11,9 @@ public interface AllotedCardRepository {
 
 	Customer findById(int id);
 	
-	void updateCustomer(Customer c);
+
 	
-	
+	void updatealloted(AllotedCard allotedcard);
+	 void updateCustomer(Customer customer);
 
 }
