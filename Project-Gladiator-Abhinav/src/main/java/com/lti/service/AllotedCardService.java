@@ -16,8 +16,7 @@ public class AllotedCardService {
 	private AllotedCardRepository allotedCardRepository;
 
 	public String activateCustomerById(int id) {
-	
-	
+
 	
 		Customer c = allotedCardRepository.findById(id);
 		
