@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lti.controller.CustomerController.CustomerStatus.CustomerStatusType;
+
 import com.lti.dto.CustomerDto;
 import com.lti.entity.Customer;
 import com.lti.service.CustomerService;
 import com.lti.service.exception.CustomerServiceException;
+import com.lti.status.CustomerStatus;
 
 @RestController
 @CrossOrigin
@@ -28,55 +29,16 @@ public class CustomerController {
 			customerService.register(customer);
 			
 			CustomerStatus status = new CustomerStatus();
-			status.setStatus(CustomerStatusType.SUCCESS);
+			status.setStatus(100);
 			status.setMessage("Registration Successfull");
 			return status;
 			
 		}
 		catch(CustomerServiceException e) {
 			CustomerStatus status = new CustomerStatus();
-			status.setStatus(CustomerStatusType.FAILURE);
+			status.setStatus(101);
 			status.setMessage(e.getMessage());
 			return status;
 		}
 	}
-	
-public static class CustomerStatus{
-		
-		private CustomerStatusType status;
-		private String message;
-		
-		
-		
-		public CustomerStatusType getStatus() {
-			return status;
-		}
-
-
-
-		public String getMessage() {
-			return message;
-		}
-
-
-
-		public void setStatus(CustomerStatusType status) {
-			this.status = status;
-		}
-
-
-
-		public void setMessage(String message) {
-			this.message = message;
-		}
-
-
-
-		public static enum CustomerStatusType{
-			SUCCESS, FAILURE;
-		}
-		
-	}
-	
-
 }
