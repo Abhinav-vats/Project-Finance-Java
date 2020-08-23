@@ -1,6 +1,5 @@
 package com.lti.entity;
 
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,11 +11,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name= "card_type_detail")
 public class CardType {
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "card_type_seq")
@@ -35,9 +32,8 @@ public class CardType {
 	@Column(name = "JOINING_FEE")
 	private double joiningFee;
 	
+	//@OneToMany(mappedBy = "cardType" , cascade = CascadeType.ALL)
 	
-	@OneToMany(mappedBy = "cardType", cascade = CascadeType.ALL)
-	private List<AllotedCard> alloctedCard;
 	
 	public int getId() {
 		return id;
