@@ -14,65 +14,81 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "customer_user_detail")
 @NamedQuery(name = "fetch-all-customer", query = "select c from Customer as c")
 public class Customer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_seq")
 	@SequenceGenerator(sequenceName = "customer_seq", allocationSize = 1, name = "customer_seq")
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "first_name")
 	private String firstName;
-	
+
 	@Column(name = "middle_name")
 	private String middleName;
-	
+
 	@Column(name = "last_name")
 	private String lastName;
-	
+
 	@Column(name = "date_of_birth")
 	private LocalDate dateOfBirth;
-	
+
 	@Column(name = "phone_number")
 	private String phoneNumber;
-	
+
 	@Column(name = "email_id")
 	private String email;
-	
+
 	@Column(name = "username")
 	private String username;
-	
+
 	@Column(name = "password")
 	private String password;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "card_type")
 	private String cardType;
-	
+
 	@Column(name = "bank_name")
 	private String bankName;
-	
+
 	@Column(name = "bank_account_number")
 	private String bankAccountNumber;
-	
+
 	@Column(name = "ifs_code")
 	private String ifsCode;
-	
+
 	@Column(name = "is_active")
 	private String isActive;
-	
-	
-	@OneToMany(mappedBy = "customer" , cascade = CascadeType.ALL)
-	//yaha pe change hhoga 
-	private List<AllotedCard> alloctedCard;
-	
+
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	private List<AllotedCard> alloctedCards;
+
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	private List<Document> documents;
+
+	public List<AllotedCard> getAlloctedCards() {
+		return alloctedCards;
+	}
+
+	public List<Document> getDocuments() {
+		return documents;
+	}
+
+	public void setAlloctedCards(List<AllotedCard> alloctedCards) {
+		this.alloctedCards = alloctedCards;
+	}
+
+	public void setDocuments(List<Document> documents) {
+		this.documents = documents;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -192,8 +208,5 @@ public class Customer {
 	public void setIsActive(String isActive) {
 		this.isActive = isActive;
 	}
-	
-	
-	
 
 }

@@ -1,10 +1,13 @@
 package com.lti.repository;
 
+import com.lti.entity.Admin;
+import com.lti.entity.Customer;
+
 public interface LoginRepository {
 	
-	int customerUserLogin(String username, String password);
+	Customer customerUserLogin(String username, String password);
 	
-	int adminUserLogin(String username, String password);
+	Admin adminUserLogin(String username, String password);
 	
 	boolean isCustomerAvalable(String username);
 	
@@ -13,6 +16,10 @@ public interface LoginRepository {
 	boolean isCustomerPasswordCorrect(String password, String username);
 
 	boolean isAdminPasswordCorrect(String password, String username);
+	
+	boolean customerActiveStatus(int id);
+	
+	boolean hasCustomerUploadedDocument(int id);
 	
 	
 
