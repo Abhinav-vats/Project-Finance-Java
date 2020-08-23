@@ -1,4 +1,4 @@
-package com.lti.service;
+package com.lti.service.exception;
 
 public class LoginException extends RuntimeException {
 

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lti.dto.LoginDto;
 import com.lti.repository.LoginRepository;
+import com.lti.service.exception.LoginException;
 
 public class LoginServiceImpl implements LoginService {
 
