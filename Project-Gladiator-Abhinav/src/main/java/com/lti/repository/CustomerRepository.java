@@ -9,5 +9,7 @@ public interface CustomerRepository {
 	boolean isCustomerAvailable(String email);
 	
 	public boolean isUsernameAvailable(String username);
+	
+	
 
 }
