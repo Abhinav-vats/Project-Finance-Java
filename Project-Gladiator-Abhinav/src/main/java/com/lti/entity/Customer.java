@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "customer_user_detail")
 @NamedQuery(name = "fetch-all-customer", query = "select c from Customer as c")
