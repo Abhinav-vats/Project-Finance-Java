@@ -17,8 +17,7 @@ import javax.persistence.Table;
 @NamedNativeQuery(name = "fetch-all", query = "select a from AllotedCard as a")
 public class AllotedCard {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "alloted_card_seq")
-	@SequenceGenerator(sequenceName = "alloted_card_seq", allocationSize = 1, name = "alloted_card_seq")
+	@GeneratedValue
 	@Column(name = "id" )
 	private int allocatedId;
 	
