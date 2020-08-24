@@ -21,12 +21,18 @@ public class AllotedCard {
 	@SequenceGenerator(sequenceName = "alloteds_card_seq",allocationSize=1,name="alloted_card_seq")
 	@Column(name = "id" )
 	private int allocatedId;
+	
 
-	@Column(name = "user_id")
-	private int userid;
+	@ManyToOne
+	@JoinColumn(name = "card_id")
+	private CardType cardType;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private Customer customer;
 	
 	@Column(name = "card_cvv_no")
-	private String cardCvvNo;
+	private int cardCvvNo;
 	
 	@Column(name = "card_no")
 	private String cardNo;
@@ -43,16 +49,6 @@ public class AllotedCard {
 	
 	@Column(name ="card_activation_status")
 	private boolean cardActivationStatus;
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "card_id")
-	private CardType cardType;
-	
-	
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private Customer customer;
 
 	public String getCardNo() {
 		return cardNo;
@@ -70,13 +66,11 @@ public class AllotedCard {
 		this.allocatedId = allocatedId;
 	}
 
-
-
-	public String getCardCvvNo() {
+	public int getCardCvvNo() {
 		return cardCvvNo;
 	}
 
-	public void setCardCvvNo(String cardCvvNo) {
+	public void setCardCvvNo(int cardCvvNo) {
 		this.cardCvvNo = cardCvvNo;
 	}
 
@@ -120,14 +114,13 @@ public class AllotedCard {
 		this.cardType = cardType;
 	}
 
-	public int getUserid() {
-		return userid;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
-
 
 
 	
