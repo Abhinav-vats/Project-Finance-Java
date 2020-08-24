@@ -46,12 +46,8 @@ public class AllotedCard {
 	private double cardCreditRemaining;
 	
 	
-	
 	@Column(name ="card_activation_status")
 	private boolean cardActivationStatus;
-
-	
-
 
 	public int getAllocatedId() {
 		return allocatedId;

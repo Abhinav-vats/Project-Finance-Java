@@ -1,10 +1,13 @@
 package com.lti.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.lti.entity.Customer;
 import com.lti.repository.AllotedCardRepository;
+import com.lti.service.exception.AllotedCardServiceException;
+import com.lti.service.exception.CustomerServiceException;
 
 @Service
 public class AllotedCardService {
@@ -13,6 +16,8 @@ public class AllotedCardService {
 	private AllotedCardRepository allotedCardRepository;
 
 	public String activateCustomerById(int id) {
+
+	
 		Customer c = allotedCardRepository.findById(id);
 		
 		//added
@@ -20,5 +25,7 @@ public class AllotedCardService {
 		c.setIsActive("true");
 		allotedCardRepository.updateCustomer(c);
 		return c.getCardType();
-	}
+		
+	
+}
 }
