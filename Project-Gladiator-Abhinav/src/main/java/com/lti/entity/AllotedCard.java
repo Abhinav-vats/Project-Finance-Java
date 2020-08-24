@@ -17,21 +17,16 @@ import javax.persistence.Table;
 @NamedNativeQuery(name = "fetch-all", query = "select a from AllotedCard as a")
 public class AllotedCard {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="stop_sq")
+	@SequenceGenerator(sequenceName = "alloteds_card_seq",allocationSize=1,name="alloted_card_seq")
 	@Column(name = "id" )
 	private int allocatedId;
-	
 
-	@ManyToOne
-	@JoinColumn(name = "card_id")
-	private CardType cardType;
-	
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private Customer customer;
+	@Column(name = "user_id")
+	private int userid;
 	
 	@Column(name = "card_cvv_no")
-	private int cardCvvNo;
+	private String cardCvvNo;
 	
 	@Column(name = "card_no")
 	private String cardNo;
@@ -48,6 +43,16 @@ public class AllotedCard {
 	
 	@Column(name ="card_activation_status")
 	private boolean cardActivationStatus;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "card_id")
+	private CardType cardType;
+	
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private Customer customer;
 
 	public String getCardNo() {
 		return cardNo;
@@ -67,15 +72,13 @@ public class AllotedCard {
 
 
 
-	public int getCardCvvNo() {
+	public String getCardCvvNo() {
 		return cardCvvNo;
 	}
 
-	public void setCardCvvNo(int cardCvvNo) {
+	public void setCardCvvNo(String cardCvvNo) {
 		this.cardCvvNo = cardCvvNo;
 	}
-
-
 
 	public LocalDate getValidity() {
 		return validity;
@@ -117,13 +120,14 @@ public class AllotedCard {
 		this.cardType = cardType;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public int getUserid() {
+		return userid;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
+
 
 
 	
