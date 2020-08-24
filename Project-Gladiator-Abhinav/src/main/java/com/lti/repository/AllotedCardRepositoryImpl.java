@@ -20,39 +20,51 @@ public class AllotedCardRepositoryImpl implements AllotedCardRepository {
 	private EntityManager entityManager;
 	
 	
-	@Transactional
-	public void updatealloted(AllotedCard allotedcard) {
-		entityManager.merge(allotedcard);
-		
-	}
-	@Transactional
-	public void updateCustomer(Customer customer) {
-		entityManager.merge(customer);
-	}
-	
-	@Transactional
-	public CardType fetchCardType(int id) {
-		return entityManager.find(CardType.class,id);}
-	
-	
-	@Transactional
-	public List<AllotedCard> alloctedCard() {
-		// TODO Auto-generated method stub
-		return entityManager
-				.createNamedQuery("fetch-all")
-				.getResultList();
-	}
-	
+
 	@Override
-	public Customer findById(int id) {
+	public Customer findCustomerById(int id) {
 		return entityManager.find(Customer.class, id);
 	}
-	
-	
 
 
 
+	@Override
+	public boolean isCardPresent(String cardNo) {
 	
+		return (Long) entityManager
+				.createQuery("select count(ac.id) from AllotedCard as ac where ac.cardNo = :cn")
+				.setParameter("cn", cardNo)
+				.getSingleResult()==1? true: false;
+				
+	}
+
+
+
+	@Override
+	public CardType fetchCardType(String cardType) {
+		return (CardType) entityManager
+				.createQuery("select ct from CardType as ct where ct.type = :c")
+				.setParameter("c",cardType)
+				.getSingleResult();
+	}
+
+
+
+	@Override
+	public void addAllotedCard(AllotedCard allotedCard) {
+		
+		entityManager.merge(allotedCard);
+	}
+	
+	
+
+public void updateCustomer(Customer customer) {
+		
+		entityManager.merge(customer);
+	}
+
+
+
 
 
 }

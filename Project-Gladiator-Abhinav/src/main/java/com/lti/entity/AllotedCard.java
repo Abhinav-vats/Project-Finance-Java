@@ -34,7 +34,7 @@ public class AllotedCard {
 	private int cardCvvNo;
 	
 	@Column(name = "card_no")
-	private int cardNo;
+	private String cardNo;
 	
 	@Column(name = "valid_till")
 	private LocalDate validity;
@@ -48,6 +48,14 @@ public class AllotedCard {
 	
 	@Column(name ="card_activation_status")
 	private boolean cardActivationStatus;
+
+	public String getCardNo() {
+		return cardNo;
+	}
+
+	public void setCardNo(String cardNo) {
+		this.cardNo = cardNo;
+	}
 
 	public int getAllocatedId() {
 		return allocatedId;
@@ -67,13 +75,7 @@ public class AllotedCard {
 		this.cardCvvNo = cardCvvNo;
 	}
 
-	public int getCardNo() {
-		return cardNo;
-	}
 
-	public void setCardNo(int cardNo) {
-		this.cardNo = cardNo;
-	}
 
 	public LocalDate getValidity() {
 		return validity;

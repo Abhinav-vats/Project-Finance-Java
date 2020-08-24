@@ -1,6 +1,11 @@
 package com.lti.repository;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import java.util.Base64;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,6 +30,13 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	}
 
+	
+	@Transactional
+	public void delete(int id) {
+		Customer customer = entityManager.find(Customer.class, id);
+		entityManager.remove(customer);
+	}
+	
 	@Override
 	public boolean isCustomerAvailable(String email) {
 		// TODO Auto-generated method stub
@@ -33,6 +45,34 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 				.setParameter("em", email)
 				.getSingleResult()==1?true:false;
 	}
+
+	@Override
+	public boolean isPresent(int id) {
+		
+		return (Long) entityManager
+				.createQuery("select count(c.id) from Customer as c where c.id= :i")
+				.setParameter("i", id)
+				.getSingleResult()==1?true:false;
+	}
+	
+
+	@Transactional
+	public List<Customer> getUserList() {
+	return entityManager.createNamedQuery("fetch-all-customer").getResultList();
+		
+	}
+	
+	@Transactional
+	public long countCustomer() {
+		return (Long) entityManager
+				.createQuery("select count(c.id) from Customer as c")
+				.getSingleResult();
+	}
+
+	
+    
+
+
 	
 	public boolean isUsernameAvailable(String username) {
 		
@@ -42,7 +82,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 				.getSingleResult()==0?true:false;
 		
 	}
+
+
 	
-	
+
 
 }
