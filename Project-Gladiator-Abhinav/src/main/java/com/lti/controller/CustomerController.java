@@ -120,13 +120,6 @@ public CustomerStatus delete(@RequestBody Customer customer) {
 
 
 
-@DeleteMapping("/users/{id}")  
-private void deleteCustomer(@PathVariable("id") int id)   
-{  
-customerService.delete(id);  
-}  
-
-
 
 
 @PostMapping("/updated")

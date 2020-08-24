@@ -15,10 +15,7 @@ public interface CustomerRepository {
 
 	long countCustomer();
 
-	int deleteById(int id);
-
-
-
+	
 	boolean isPresent(int id);
 
 	List<Customer> getUserList();

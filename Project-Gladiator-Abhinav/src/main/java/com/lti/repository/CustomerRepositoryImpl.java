@@ -71,14 +71,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	
     
-	/*
-	@Transactional
-	public int deleteById(int id) {
-		return (int) entityManager
-				.createQuery("Delete from Customer as c where c.id=:id")
-				.getSingleResult();
-	}
-*/
+
 
 	
 	public boolean isUsernameAvailable(String username) {
@@ -93,13 +86,5 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	
 
-	@Override
-	public int deleteById(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	
-
-	
 
 }
