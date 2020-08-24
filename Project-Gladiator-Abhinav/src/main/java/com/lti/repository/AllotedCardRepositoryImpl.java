@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.lti.entity.AllotedCard;
+import com.lti.entity.CardType;
 import com.lti.entity.Customer;
 import com.lti.entity.Product;
 
@@ -20,9 +21,20 @@ public class AllotedCardRepositoryImpl implements AllotedCardRepository {
 	
 	
 	@Transactional
+	public void updatealloted(AllotedCard allotedcard) {
+		entityManager.merge(allotedcard);
+		
+	}
+	@Transactional
 	public void updateCustomer(Customer customer) {
 		entityManager.merge(customer);
 	}
+	
+	@Transactional
+	public CardType fetchCardType(int id) {
+		return entityManager.find(CardType.class,id);}
+	
+	
 	@Transactional
 	public List<AllotedCard> alloctedCard() {
 		// TODO Auto-generated method stub
@@ -35,6 +47,8 @@ public class AllotedCardRepositoryImpl implements AllotedCardRepository {
 	public Customer findById(int id) {
 		return entityManager.find(Customer.class, id);
 	}
+	
+	
 
 
 

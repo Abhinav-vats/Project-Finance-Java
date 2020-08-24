@@ -72,9 +72,20 @@ public class Customer {
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<Document> documents;
+	
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	private List<OrderDetail> orderDetails;
 
 	public List<AllotedCard> getAlloctedCards() {
 		return alloctedCards;
+	}
+
+	public List<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
 	}
 
 	public List<Document> getDocuments() {
