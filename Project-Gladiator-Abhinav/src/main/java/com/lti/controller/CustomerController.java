@@ -9,24 +9,22 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 
 import com.lti.dto.CustomerDto;
+import com.lti.dto.CustomerUpdateDto;
 import com.lti.entity.Customer;
 import com.lti.entity.Product;
 import com.lti.service.CustomerService;
 import com.lti.service.exception.CustomerServiceException;
-
-import com.lti.service.exception.ProductServiceException;
 
 import com.lti.status.CustomerStatus;
 import com.lti.status.UserStatus;
@@ -36,6 +34,7 @@ import com.lti.status.UsernameStatus;
 @RestController
 @CrossOrigin
 public class CustomerController {
+	
 	
 	@Autowired
 	private CustomerService customerService;
@@ -82,7 +81,7 @@ public class CustomerController {
 @RequestMapping(path = "/user", produces = "application/json")
 public UserStatus indexDisplay() throws CustomerServiceException {
 	try {
-		List<Customer> userList = CustomerService.getAllUser();
+		List<Customer> userList = customerService.displayCustomer();
 		UserStatus stat = new UserStatus();
 		stat.setStatus(100);
 		stat.setMessage("User Page Successfully");
@@ -99,8 +98,29 @@ public UserStatus indexDisplay() throws CustomerServiceException {
 
 }
 
+@PostMapping("/delete")
+public CustomerStatus delete(@RequestBody Customer customer) {
+	try {
+		//int customerId=Integer.parseInt(id);
+		customerService.delete(customer.getId());
+		
+		CustomerStatus status = new CustomerStatus();
+		status.setStatus(100);
+		status.setMessage("Deleted");
+		return status;
+		
+	}
+	catch(CustomerServiceException e) {
+		CustomerStatus status = new CustomerStatus();
+		status.setStatus(101);
+		status.setMessage(e.getMessage());
+		return status;
+	}
+}
 
-@DeleteMapping("/user/{id}")  
+
+
+@DeleteMapping("/users/{id}")  
 private void deleteCustomer(@PathVariable("id") int id)   
 {  
 customerService.delete(id);  
@@ -108,12 +128,13 @@ customerService.delete(id);
 
 
 
+
 @PostMapping("/updated")
-public CustomerStatus update(@RequestBody CustomerDto customerDto) {
+public CustomerStatus updateCustomer(@RequestBody CustomerUpdateDto customerUpdateDto) {
 	try {
 		Customer customer = new Customer();
-		BeanUtils.copyProperties(customerDto, customer);
-		customerService.register(customer);
+		BeanUtils.copyProperties(customerUpdateDto, customer);
+		customerService.updateCustomer(customer);
 		
 		CustomerStatus status = new CustomerStatus();
 	

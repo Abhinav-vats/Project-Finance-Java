@@ -30,6 +30,13 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 
 	}
 
+	
+	@Transactional
+	public void delete(int id) {
+		Customer customer = entityManager.find(Customer.class, id);
+		entityManager.remove(customer);
+	}
+	
 	@Override
 	public boolean isCustomerAvailable(String email) {
 		// TODO Auto-generated method stub
@@ -50,30 +57,27 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	
 
 	@Transactional
-	public List<Customer> getAllUser() {
-	return entityManager.createNamedQuery("fetch-all").getResultList();
+	public List<Customer> getUserList() {
+	return entityManager.createNamedQuery("fetch-all-customer").getResultList();
 		
 	}
 	
 	@Transactional
 	public long countCustomer() {
 		return (Long) entityManager
-				.createQuery("select count(c.id) from customer_user_detail as c")
+				.createQuery("select count(c.id) from Customer as c")
 				.getSingleResult();
 	}
 
 	
-	@Override
+    
+	/*
+	@Transactional
 	public int deleteById(int id) {
 		return (int) entityManager
-				.createQuery("select count(c.id) from customer_user_detail as c")
+				.createQuery("Delete from Customer as c where c.id=:id")
 				.getSingleResult();
 	}
-/*
-	public Customer findById(int id) {
-		return entityManager.find(Customer.class,id);
-	}
-	
 */
 
 	
@@ -84,6 +88,15 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 				.setParameter("un", username)
 				.getSingleResult()==0?true:false;
 		
+	}
+
+
+	
+
+	@Override
+	public int deleteById(int id) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

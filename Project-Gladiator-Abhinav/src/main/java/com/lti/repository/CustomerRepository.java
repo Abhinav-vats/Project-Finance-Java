@@ -11,11 +11,8 @@ public interface CustomerRepository {
 	boolean isCustomerAvailable(String email);
 	
 	public boolean isUsernameAvailable(String username);
-	
-	
+	void delete(int id);
 
-	List<Customer> getAllUser();
-	
 	long countCustomer();
 
 	int deleteById(int id);
@@ -23,6 +20,8 @@ public interface CustomerRepository {
 
 
 	boolean isPresent(int id);
+
+	List<Customer> getUserList();
 
 	
 

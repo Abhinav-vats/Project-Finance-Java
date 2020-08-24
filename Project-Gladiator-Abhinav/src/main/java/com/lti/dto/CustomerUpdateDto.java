@@ -3,7 +3,7 @@ package com.lti.dto;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
-public class CustomerUpdateDTO {
+public class CustomerUpdateDto {
 
 	private String firstName;
 

@@ -26,7 +26,7 @@ public class UserStatus {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public void setUserList(List<Customer> productList) {
+	public void setUserList(List<Customer> userList) {
 		this.userList = userList;
 	}
 
