@@ -10,12 +10,19 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 
-import com.lti.dto.CardTypeDto;
+
+import com.lti.dto.OtpManagerDto;
+
 import com.lti.entity.Admin;
 import com.lti.entity.Customer;
 import com.lti.repository.AdminRepository;
+
 import com.lti.repository.CustomerRepository;
+
+import com.lti.repository.OtpRepositoryImpl;
+
 import com.lti.service.CustomerService;
+import com.lti.service.OtpServiceImpl;
 import com.lti.service.exception.CustomerServiceException;
 
 @SpringBootTest
@@ -64,26 +71,23 @@ public class CustomerTest {
 		
 	}
 	
+
 	
-	//@Test
-	// void addCustomerTest() {
-		//Customer customer = new Customer();
-		//customer.setFirstName("Nupur");
-		/*customer.setMiddleName("k");
-		customer.setLastName("jain");
-	    customer.setDateOfBirth(LocalDate.of(2, 4, 97));
-		customer.setPhoneNumber("9897713538");
-		customer.setEmail("nupurjain@gmail.com");
-		customer.setUsername("nupi123");
-		customer.setPassword("nupi123");
-		customer.setAddress("Tropical Dairy Srinagar Garhwal");
-		customer.setCardType("gold");
+
+	@Test
+	void testFetchOtpbymail() {
 		
-		customer.setBankName("hdfc");
-		customer.setBankAccountNumber("1234567891234567");
-		customer.setIfsCode("hdfin123");
-		customerRepository.addCustomer(customer);*/
-	//}
+		OtpManagerDto o = new OtpManagerDto();
+		o.setEmailId("abhi123up@gmail.com");
+		o.setOtpRecieved("771051");
+		OtpServiceImpl serv = new OtpServiceImpl();
+		OtpRepositoryImpl repo = new OtpRepositoryImpl();
+		System.out.println(repo.fetchOtpByEmailId(o.getEmailId()));
+		
+		
+		
+	}
+
 
 	
 	}

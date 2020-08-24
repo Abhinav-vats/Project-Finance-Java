@@ -8,21 +8,15 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
-
 import com.lti.dto.CustomerDto;
 import com.lti.dto.CustomerUpdateDto;
 import com.lti.entity.Customer;
-import com.lti.entity.Product;
 import com.lti.service.CustomerService;
 import com.lti.service.exception.CustomerServiceException;
 
@@ -122,16 +116,23 @@ public CustomerStatus delete(@RequestBody Customer customer) {
 
 
 
-@PostMapping("/updated")
+@PostMapping("/update")
+//@RequestMapping(path="/update",produces = "application/json")
 public CustomerStatus updateCustomer(@RequestBody CustomerUpdateDto customerUpdateDto) {
+//public UserStatus updateCustomer(@RequestBody CustomerUpdateDto customerUpdateDto) {
 	try {
 		Customer customer = new Customer();
-		BeanUtils.copyProperties(customerUpdateDto, customer);
-		customerService.updateCustomer(customer);
 		
-		CustomerStatus status = new CustomerStatus();
-	
-		status.setMessage("Updated Successfull");
+		
+		BeanUtils.copyProperties(customerUpdateDto, customer);
+		//List<Customer> userList = customerService.displayCustomer();
+		customerService.update(customer);
+		
+	   CustomerStatus status = new CustomerStatus();
+	   status.setStatus(200);
+		
+	//	status.setUserList(userList);
+		status.setMessage("Updated Successfull!");
 		return status;
 		
 	}

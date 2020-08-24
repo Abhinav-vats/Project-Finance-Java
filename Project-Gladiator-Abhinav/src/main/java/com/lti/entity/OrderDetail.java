@@ -76,10 +76,5 @@ public class OrderDetail {
 		this.planId = planId;
 	}
 	
-	
-	
-	
-	
-	
 
 }
