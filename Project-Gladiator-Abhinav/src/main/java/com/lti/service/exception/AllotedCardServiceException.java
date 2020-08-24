@@ -1,5 +1,5 @@
 package com.lti.service.exception;
 
-public class AllotedCardServiceException extends RuntimeException{
+public class AllotedCardServiceException extends RuntimeException {
 
 }
