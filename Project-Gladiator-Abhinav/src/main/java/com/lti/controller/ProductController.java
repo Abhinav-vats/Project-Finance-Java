@@ -35,7 +35,7 @@ public class ProductController {
 		}
 		catch(ProductServiceException e) {
 			ProductStatus stat = new ProductStatus();
-			stat.setStatus(101);
+			stat.setStatus(102);
 			stat.setMessage(e.getMessage());
 			return stat;
 		}
