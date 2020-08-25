@@ -7,9 +7,12 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 
+import com.lti.dto.OtpManagerDto;
 import com.lti.entity.Admin;
 import com.lti.repository.AdminRepository;
+import com.lti.repository.OtpRepositoryImpl;
 import com.lti.service.CustomerService;
+import com.lti.service.OtpServiceImpl;
 import com.lti.service.exception.CustomerServiceException;
 
 @SpringBootTest
@@ -55,6 +58,20 @@ public class CustomerTest {
 		Admin admin = adminRepository.diplayAdminById(162, "abhi123");
 		
 		System.out.println(admin.getFirstName()+" "+admin.getLatsName());
+		
+	}
+	
+	@Test
+	void testFetchOtpbymail() {
+		
+		OtpManagerDto o = new OtpManagerDto();
+		o.setEmailId("abhi123up@gmail.com");
+		o.setOtpRecieved("771051");
+		OtpServiceImpl serv = new OtpServiceImpl();
+		OtpRepositoryImpl repo = new OtpRepositoryImpl();
+		System.out.println(repo.fetchOtpByEmailId(o.getEmailId()));
+		
+		
 		
 	}
 

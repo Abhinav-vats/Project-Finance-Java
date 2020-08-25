@@ -8,13 +8,14 @@ import com.lti.entity.Customer;
 import com.lti.entity.Product;
 
 public interface AllotedCardRepository {
-	public List<AllotedCard> alloctedCard();
 
-	Customer findById(int id);
-	
-	CardType fetchCardType(int id);
-	
-	void updatealloted(AllotedCard allotedcard);
-	 void updateCustomer(Customer customer);
+	Customer findCustomerById(int id);
 
+	public boolean isCardPresent(String cardNo);
+
+	CardType fetchCardType(String cardType);
+
+	void addAllotedCard(AllotedCard allotedCard);
+
+	void updateCustomer(Customer customer);
 }
