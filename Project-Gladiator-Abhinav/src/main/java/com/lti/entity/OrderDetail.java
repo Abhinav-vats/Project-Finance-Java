@@ -6,16 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.NamedNativeQuery;
+
 
 
 
 @Entity
 @Table(name="order_detail")
-@NamedNativeQuery(name="fetch-all-order", query="select o from OrderDetail as o" )
 public class OrderDetail {
-	
 	@Id
 	@GeneratedValue
 	
@@ -33,8 +32,17 @@ public class OrderDetail {
 	@Column(name = "price_paid")
 	private int pricePaid;
 	
-	@Column(name = "plan_id")
-	private int planId;
+	@ManyToOne
+	@JoinColumn(name = "plan_id")
+	private PlanType planType;
+	
+	public PlanType getPlanType() {
+		return planType;
+	}
+
+	public void setPlanType(PlanType planType) {
+		this.planType = planType;
+	}
 
 	public int getOrderId() {
 		return orderId;
@@ -68,13 +76,9 @@ public class OrderDetail {
 		this.pricePaid = pricePaid;
 	}
 
-	public int getPlanId() {
-		return planId;
-	}
+	
+	
 
-	public void setPlanId(int planId) {
-		this.planId = planId;
-	}
 	
 	
 	
