@@ -2,6 +2,7 @@ package com.lti.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +14,8 @@ public class OtpRepositoryImpl implements OtpRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	@Override
+	
+	@Transactional
 	public String addNewOtp(String emailId, String otp) {
 		
 		OtpManager otpManager = new OtpManager();
@@ -25,7 +27,8 @@ public class OtpRepositoryImpl implements OtpRepository {
 		return "Otp Saved Successfully";
 	}
 
-	@Override
+	
+	@Transactional
 	public String fetchOtpByEmailId(String emailId) {
 		
 		return (String) entityManager
@@ -34,10 +37,11 @@ public class OtpRepositoryImpl implements OtpRepository {
 				.getSingleResult();
 	}
 
-	@Override
+	
+	@Transactional
 	public void removeOtpByEmailId(String emailId) {
 		OtpManager otpManager =(OtpManager) entityManager
-				.createQuery("select o from OtpManager as o where o.email= :ei")
+				.createQuery("select o from OtpManager as o where o.emailId= :ei")
 				.setParameter("ei", emailId)
 				.getSingleResult();
 		
@@ -46,13 +50,14 @@ public class OtpRepositoryImpl implements OtpRepository {
 		
 	}
 
-	@Override
+	
+	@Transactional
 	public boolean isOtpByEmailPresent(String emailId) {
 		
 		return (Long) entityManager
 				.createQuery("select count(o.id) from OtpManager as o where o.emailId = :ei")
 				.setParameter("ei", emailId)
-				.getSingleResult()==1?true:false;
+				.getSingleResult()==0?true:false;
 	}
 
 }

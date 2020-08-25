@@ -15,7 +15,7 @@ public interface CustomerRepository {
 
 	long countCustomer();
 
-	
+	 void update(Customer customer);
 	boolean isPresent(int id);
 
 	List<Customer> getUserList();

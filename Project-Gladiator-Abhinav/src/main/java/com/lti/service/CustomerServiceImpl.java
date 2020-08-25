@@ -31,8 +31,6 @@ public class CustomerServiceImpl implements CustomerService {
 		
 	}
 
-
-
 	public List<Customer> displayCustomer() throws CustomerServiceException{
 		
 	if(customerRepository.countCustomer()>0)
@@ -40,7 +38,6 @@ public class CustomerServiceImpl implements CustomerService {
 	else 
 		throw new CustomerServiceException("No Customer Available");
 }
-	
 	
 	//private Customer toEntity(CustomerUpdateDto customerUpdateDto) {
 		private Customer toEntity(CustomerUpdateDto customerUpdateDto) {
@@ -50,7 +47,6 @@ public class CustomerServiceImpl implements CustomerService {
         return cust;
     }
 	
-
 	    public void add(CustomerUpdateDto customerUpdateDto) {
 	        customerUpdateRepository.save(toEntity(customerUpdateDto));
 	    }
@@ -62,9 +58,17 @@ public class CustomerServiceImpl implements CustomerService {
 			customerRepository.delete(id);
 		}
 		else 
-			throw new CustomerServiceException("Customer Already Removed");
+			throw new CustomerServiceException("Detail Not Exist!");
 		
 	}
+	
+	public void update(Customer customer) throws  CustomerServiceException{
+		if(customerRepository.isPresent(customer.getId())) {
+			customerRepository.update(customer);
+		}
+	}
+	
+	
 
 	@Override
 	public UsernameStatus checkUsernameAvailability(String username) throws  CustomerServiceException {
@@ -85,19 +89,5 @@ public class CustomerServiceImpl implements CustomerService {
 			
 	}
 
-
-
-	
-	@Override
-	public void updateCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-
-
-	
 
 }

@@ -26,7 +26,7 @@ public class OtpServiceImpl implements OtpService {
 	         otp= otp+ numbers.charAt(random.nextInt(numbers.length()));
 	      }
 	      
-	      if(!otpRepository.isOtpByEmailPresent(emailId)) {
+	      if(otpRepository.isOtpByEmailPresent(emailId)) {
 	    	  otpRepository.addNewOtp(emailId, otp);
 	    	  return otp;
 	      }
@@ -38,7 +38,11 @@ public class OtpServiceImpl implements OtpService {
 
 	@Override
 	public String matchAndRemoveOtp(OtpManagerDto otpManagerDto) throws OtpServiceException {
-		if(otpRepository.fetchOtpByEmailId(otpManagerDto.getEmailId()) == otpManagerDto.getOtpRecieved()) {
+		String otpFetched = otpRepository.fetchOtpByEmailId(otpManagerDto.getEmailId());
+		String otpRecieved =otpManagerDto.getOtpRecieved(); 
+		
+		if(otpFetched.equals(otpRecieved)) {
+			otpRepository.removeOtpByEmailId(otpManagerDto.getEmailId());
 			return "Otp Match, email verfied ";
 		}
 		else {
