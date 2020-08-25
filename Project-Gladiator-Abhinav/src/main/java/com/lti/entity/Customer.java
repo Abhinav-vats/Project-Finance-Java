@@ -66,6 +66,7 @@ public class Customer {
 
 	@Column(name = "is_active")
 	private String isActive;
+	
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<AllotedCard> alloctedCards;
@@ -74,19 +75,32 @@ public class Customer {
 	private List<Document> documents;
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	private List<OrderDetail> orderDetails;
+	private List<OrderDetail> orderDetail;
+	
+	public List<OrderDetail> getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(List<OrderDetail> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	private List<PaymentSchedule> paymentSchedule;
+
+	public List<PaymentSchedule> getPaymentSchedule() {
+		return paymentSchedule;
+	}
+
+	public void setPaymentSchedule(List<PaymentSchedule> paymentSchedule) {
+		this.paymentSchedule = paymentSchedule;
+	}
 
 	public List<AllotedCard> getAlloctedCards() {
 		return alloctedCards;
 	}
 
-	public List<OrderDetail> getOrderDetails() {
-		return orderDetails;
-	}
-
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
+	
 
 	public List<Document> getDocuments() {
 		return documents;

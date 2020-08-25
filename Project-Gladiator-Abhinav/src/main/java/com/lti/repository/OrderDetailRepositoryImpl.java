@@ -4,9 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import com.lti.entity.Customer;
 import com.lti.entity.OrderDetail;
@@ -21,7 +22,7 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository{
 	@Transactional
 	public List<OrderDetail> getOrderList() {
 		return entityManager
-				.createNamedQuery("fetch-all-order")
+				.createQuery("select o from OrderDetail as o")
 				.getResultList();
 	}
 
