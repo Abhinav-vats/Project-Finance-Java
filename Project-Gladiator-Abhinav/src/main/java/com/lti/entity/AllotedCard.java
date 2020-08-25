@@ -51,7 +51,7 @@ public class AllotedCard {
 	
 	
 	@Column(name ="card_activation_status")
-	private boolean cardActivationStatus;
+	private String cardActivationStatus;
 
 
 	public int getAllocatedId() {
@@ -134,14 +134,16 @@ public class AllotedCard {
 	}
 
 
-	public boolean isCardActivationStatus() {
+	public String getCardActivationStatus() {
 		return cardActivationStatus;
 	}
 
 
-	public void setCardActivationStatus(boolean cardActivationStatus) {
+	public void setCardActivationStatus(String cardActivationStatus) {
 		this.cardActivationStatus = cardActivationStatus;
 	}
+
+
 
 
 
