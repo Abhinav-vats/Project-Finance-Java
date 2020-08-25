@@ -31,34 +31,6 @@ public class AllotedCard {
     @Column(name = "id")
     private int allocatedId;
 
-<<<<<<< HEAD
-	
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private Customer customer;
-	
-	@Column(name = "card_cvv_no")
-	private int cardCvvNo;
-	
-	@Column(name = "card_no")
-	private String cardNo;
-	
-	@Column(name = "valid_till")
-	private LocalDate validity;
-	
-	@Column(name ="card_credit_used")
-	private double cardCreditUsed;
-	
-	@Column(name ="card_credit_remaining")
-	private double cardCreditRemaining;
-	
-	
-	@Column(name ="card_activation_status")
-	private String cardActivationStatus;
-=======
- 
->>>>>>> branch 'master' of https://github.com/Abhinav-vats/Project-Finance-Java.git
-
     @ManyToOne
     @JoinColumn(name = "card_id")
     private CardType cardType;
@@ -153,25 +125,13 @@ public class AllotedCard {
         return cardActivationStatus;
     }
 
-<<<<<<< HEAD
-	public String getCardActivationStatus() {
-		return cardActivationStatus;
-	}
-=======
  
->>>>>>> branch 'master' of https://github.com/Abhinav-vats/Project-Finance-Java.git
 
     public void setAllocatedId(int allocatedId) {
         this.allocatedId = allocatedId;
     }
 
-<<<<<<< HEAD
-	public void setCardActivationStatus(String cardActivationStatus) {
-		this.cardActivationStatus = cardActivationStatus;
-	}
-=======
  
->>>>>>> branch 'master' of https://github.com/Abhinav-vats/Project-Finance-Java.git
 
     public void setCardType(CardType cardType) {
         this.cardType = cardType;
@@ -179,11 +139,6 @@ public class AllotedCard {
 
  
 
-<<<<<<< HEAD
-
-
-}
-=======
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
@@ -229,4 +184,3 @@ public class AllotedCard {
  
 
 }
->>>>>>> branch 'master' of https://github.com/Abhinav-vats/Project-Finance-Java.git
