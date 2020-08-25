@@ -1,4 +1,7 @@
 package com.lti.test.service;
+import com.lti.entity.*;
+
+import java.util.List;
 
 import java.time.LocalDate;
 
@@ -18,8 +21,9 @@ import com.lti.entity.Customer;
 import com.lti.repository.AdminRepository;
 
 import com.lti.repository.CustomerRepository;
-
+import com.lti.repository.OrderDetailRepositoryImpl;
 import com.lti.repository.OtpRepositoryImpl;
+
 
 import com.lti.service.CustomerService;
 import com.lti.service.OtpServiceImpl;
@@ -46,6 +50,18 @@ public class CustomerTest {
 	}
 	
 	@Test
+	void fetchorder() {
+		
+		OrderDetailRepositoryImpl a = new OrderDetailRepositoryImpl();
+		List<OrderDetail> l = a.getOrderList();
+		for(OrderDetail o:l) {
+			System.out.println(o.getOrderId());
+		}
+		
+		
+	}
+	
+	@Test
 	void adminRepoAddAdminTest() {
 		
 		Admin admin = new Admin();
@@ -62,6 +78,7 @@ public class CustomerTest {
 		
 		
 	}
+	
 	
 	@Test
 	void adminFetchTest() {

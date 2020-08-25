@@ -2,14 +2,21 @@ package com.lti.status;
 
 import java.util.List;
 
+import com.lti.dto.OrderDetailDto;
 import com.lti.entity.*;
 
 public class OrderDetailStatus {
 	
 	private int status;
 	private String message;
-	private List<OrderDetail> orderList;
+	private List<OrderDetailDto> orderList;
 	
+	public List<OrderDetailDto> getOrderList() {
+		return orderList;
+	}
+	public void setOrderList(List<OrderDetailDto> orderList) {
+		this.orderList = orderList;
+	}
 	public int getStatus() {
 		return status;
 	}
@@ -22,12 +29,7 @@ public class OrderDetailStatus {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public List<OrderDetail> getOrderList() {
-		return orderList;
-	}
-	public void setOrderList(List<OrderDetail> orderList) {
-		this.orderList = orderList;
-	}
+}
 	
 
-}
+

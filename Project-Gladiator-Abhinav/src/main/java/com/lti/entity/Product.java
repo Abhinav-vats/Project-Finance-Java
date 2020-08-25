@@ -1,11 +1,15 @@
 package com.lti.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -46,6 +50,9 @@ public class Product {
 
 	@Column(name = "profit_share")
 	private double profitShare;
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	private List<OrderDetail> OrderDetail;
 
 	public int getId() {
 		return id;

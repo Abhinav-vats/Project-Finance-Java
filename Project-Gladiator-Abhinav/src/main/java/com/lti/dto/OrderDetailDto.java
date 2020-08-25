@@ -6,10 +6,16 @@ public class OrderDetailDto {
 	private int orderId;
 	private int user_id;
 	private int product_id;
-	private int pricePaid;
-	private int planId;
+	private double pricePaid;
+	private int plan_id;
 	
 	
+	public int getPlan_id() {
+		return plan_id;
+	}
+	public void setPlan_id(int plan_id) {
+		this.plan_id = plan_id;
+	}
 	public int getOrderId() {
 		return orderId;
 	}
@@ -28,18 +34,13 @@ public class OrderDetailDto {
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
-	public int getPricePaid() {
+	public double getPricePaid() {
 		return pricePaid;
 	}
-	public void setPricePaid(int pricePaid) {
+	public void setPricePaid(double pricePaid) {
 		this.pricePaid = pricePaid;
 	}
-	public int getPlanId() {
-		return planId;
-	}
-	public void setPlanId(int planId) {
-		this.planId = planId;
-	}
+	
 	
 
 }
