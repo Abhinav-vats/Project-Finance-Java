@@ -18,8 +18,9 @@ import javax.persistence.Table;
 @NamedNativeQuery(name = "fetch-all", query = "select a from AllotedCard as a")
 public class AllotedCard {
 	@Id
+
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "stop_sq")
-	@SequenceGenerator(sequenceName = "stop_sq", allocationSize = 1, name = "stop_sq")
+	@SequenceGenerator(sequenceName = "alloteds_card_seq", allocationSize = 1, name = "alloted_card_seq")
 	@Column(name = "id")
 	private int allocatedId;
 
@@ -35,7 +36,7 @@ public class AllotedCard {
 	private String cardCvvNo;
 
 	@Column(name = "card_no")
-	private int cardNo;
+	private String cardNo;
 
 	@Column(name = "valid_till")
 	private LocalDate validity;
@@ -61,7 +62,11 @@ public class AllotedCard {
 		return customer;
 	}
 
-	public int getCardNo() {
+	public String getCardCvvNo() {
+		return cardCvvNo;
+	}
+
+	public String getCardNo() {
 		return cardNo;
 	}
 
@@ -93,15 +98,11 @@ public class AllotedCard {
 		this.customer = customer;
 	}
 
-	public String getCardCvvNo() {
-		return cardCvvNo;
-	}
-
 	public void setCardCvvNo(String cardCvvNo) {
 		this.cardCvvNo = cardCvvNo;
 	}
 
-	public void setCardNo(int cardNo) {
+	public void setCardNo(String cardNo) {
 		this.cardNo = cardNo;
 	}
 
