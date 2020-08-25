@@ -18,8 +18,6 @@ public class CustomerUpdateDto {
 
 	private String username;
 
-	
-
 	private String address;
 
 	private String cardType;

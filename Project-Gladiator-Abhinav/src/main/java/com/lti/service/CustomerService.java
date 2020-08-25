@@ -15,10 +15,10 @@ public interface CustomerService {
 
    List<Customer> displayCustomer() throws CustomerServiceException;
 	
-	
+   void update(Customer customer) throws CustomerServiceException;
 	void delete(int id) throws CustomerServiceException;
 	
-	public void updateCustomer(Customer customer);
+	
 	
 	UsernameStatus checkUsernameAvailability(String username) throws  CustomerServiceException;
 
