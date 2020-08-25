@@ -26,6 +26,7 @@ public class AllotedCardServiceImp implements AllotedCardService {
 		allotedCard.setCardNo(allotedDto.getCardNo());
 		allotedCard.setCardCvvNo(Integer.parseInt(allotedDto.getCardCvvNo()));
 		allotedCard.setValidity(allotedDto.getValidity());
+		allotedCard.setCardActivationStatus("Activated");
 		
 		Customer customer = allotedCardRepository.findCustomerById(allotedDto.getUserid());
 		allotedCard.setCustomer(customer);
