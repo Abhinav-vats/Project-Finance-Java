@@ -1,5 +1,8 @@
 package com.lti.test.service;
 
+import java.time.LocalDate;
+
+import org.hibernate.type.ClassType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -7,10 +10,17 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 
+
 import com.lti.dto.OtpManagerDto;
+
 import com.lti.entity.Admin;
+import com.lti.entity.Customer;
 import com.lti.repository.AdminRepository;
+
+import com.lti.repository.CustomerRepository;
+
 import com.lti.repository.OtpRepositoryImpl;
+
 import com.lti.service.CustomerService;
 import com.lti.service.OtpServiceImpl;
 import com.lti.service.exception.CustomerServiceException;
@@ -20,6 +30,8 @@ import com.lti.service.exception.CustomerServiceException;
 @Rollback(false)
 public class CustomerTest {
 	
+	@Autowired
+	private CustomerRepository customerRepository;
 	@Autowired
 	private CustomerService customerService;
 	
@@ -49,8 +61,6 @@ public class CustomerTest {
 		
 		
 		
-		
-		
 	}
 	
 	@Test
@@ -61,6 +71,9 @@ public class CustomerTest {
 		
 	}
 	
+
+	
+
 	@Test
 	void testFetchOtpbymail() {
 		
@@ -75,4 +88,6 @@ public class CustomerTest {
 		
 	}
 
-}
+
+	
+	}
