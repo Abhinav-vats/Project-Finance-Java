@@ -33,7 +33,7 @@ public class AllotedCard {
 	private Customer customer;
 
 	@Column(name = "card_cvv_no")
-	private String cardCvvNo;
+	private int cardCvvNo;
 
 	@Column(name = "card_no")
 	private String cardNo;
@@ -62,7 +62,7 @@ public class AllotedCard {
 		return customer;
 	}
 
-	public String getCardCvvNo() {
+	public int getCardCvvNo() {
 		return cardCvvNo;
 	}
 
@@ -98,7 +98,7 @@ public class AllotedCard {
 		this.customer = customer;
 	}
 
-	public void setCardCvvNo(String cardCvvNo) {
+	public void setCardCvvNo(int cardCvvNo) {
 		this.cardCvvNo = cardCvvNo;
 	}
 
