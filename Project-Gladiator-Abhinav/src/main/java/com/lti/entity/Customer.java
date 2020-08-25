@@ -75,6 +75,17 @@ public class Customer {
 	
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetails;
+	
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	private List<PaymentSchedule> paymentSchedule;
+
+	public List<PaymentSchedule> getPaymentSchedule() {
+		return paymentSchedule;
+	}
+
+	public void setPaymentSchedule(List<PaymentSchedule> paymentSchedule) {
+		this.paymentSchedule = paymentSchedule;
+	}
 
 	public List<AllotedCard> getAlloctedCards() {
 		return alloctedCards;

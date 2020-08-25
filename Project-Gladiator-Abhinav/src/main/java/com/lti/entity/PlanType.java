@@ -29,6 +29,19 @@ public class PlanType {
 	
 	@OneToMany(mappedBy = "planType", cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetail;
+	
+	@OneToMany(mappedBy = "planType", cascade = CascadeType.ALL)
+	private List<PaymentSchedule> paymentSchedule;
+	
+	
+
+	public List<PaymentSchedule> getPaymentSchedule() {
+		return paymentSchedule;
+	}
+
+	public void setPaymentSchedule(List<PaymentSchedule> paymentSchedule) {
+		this.paymentSchedule = paymentSchedule;
+	}
 
 	public int getPlanId() {
 		return planId;

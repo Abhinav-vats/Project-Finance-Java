@@ -18,7 +18,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Transactional
 	public List<Product> getProductList() {
-		// TODO Auto-generated method stub
+		
 		return entityManager
 				.createNamedQuery("fetch-all-product")
 				.getResultList();
