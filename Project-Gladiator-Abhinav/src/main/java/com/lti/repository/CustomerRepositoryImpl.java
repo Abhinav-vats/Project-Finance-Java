@@ -37,6 +37,12 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 		entityManager.remove(customer);
 	}
 	
+	@Transactional
+	public void update(Customer customer) {
+		Customer cust = entityManager.find(Customer.class, customer.getId());
+		entityManager.merge(customer);
+	}
+	
 	@Override
 	public boolean isCustomerAvailable(String email) {
 		// TODO Auto-generated method stub
