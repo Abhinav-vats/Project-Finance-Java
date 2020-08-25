@@ -1,5 +1,7 @@
 package com.lti.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,18 +32,18 @@ public class PaymentSchedule {
 	@Column(name="payment_status")
 	private String paymentStatus;
 	
-	@Column(name="card_share_amount")
-	private int cardSharedAmount;
+	@Column(name="installment")
+	private int installment;
 	
-	@Column(name="late_fine_charged")
-	private int lateFineCharged;
-	
+	@Column(name= "payment_date")
+	private LocalDate paymentDate;
+		
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private OrderDetail orderDetail;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_detail")
+	@JoinColumn(name = "user_id")
 	private Customer customer;
 	
 	@ManyToOne
@@ -49,7 +51,97 @@ public class PaymentSchedule {
 	private PlanType planType;
 	
 	
-	
+
+	public int getInstallment() {
+		return installment;
+	}
+
+
+	public void setInstallment(int installment) {
+		this.installment = installment;
+	}
+
+
+	public int getPaymentId() {
+		return paymentId;
+	}
+
+
+	public void setPaymentId(int paymentId) {
+		this.paymentId = paymentId;
+	}
+
+
+	public int getMonthCount() {
+		return monthCount;
+	}
+
+
+	public void setMonthCount(int monthCount) {
+		this.monthCount = monthCount;
+	}
+
+
+	public String getMonthFor() {
+		return monthFor;
+	}
+
+
+	public void setMonthFor(String monthFor) {
+		this.monthFor = monthFor;
+	}
+
+
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+
+
+
+	public OrderDetail getOrderDetail() {
+		return orderDetail;
+	}
+
+
+	public void setOrderDetail(OrderDetail orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+
+	public PlanType getPlanType() {
+		return planType;
+	}
+
+
+	public void setPlanType(PlanType planType) {
+		this.planType = planType;
+	}
+
+
+	public LocalDate getPaymentDate() {
+		return paymentDate;
+	}
+
+
+	public void setPaymentDate(LocalDate paymentDate) {
+		this.paymentDate = paymentDate;
+	}
 	
 	
 	
