@@ -29,10 +29,18 @@ public class UserDetailController {
 			Customer customer= userDetailService.findById(customerIdDto.getId());
 			UserDetailDto userDetailDto = new UserDetailDto();
 			BeanUtils.copyProperties(customer, userDetailDto);
+			
+			String aadhar = userDetailService.fetchAadhar(customerIdDto.getId());
+			String panCard = userDetailService.fetchPanCard(customerIdDto.getId());
+			String blankCheque = userDetailService.fetchBlankCheque(customerIdDto.getId());
+			
 			UserDetailStatus status = new UserDetailStatus();
 			status.setStatus(110);
 			status.setMessage("Fetched");
 			status.setUserDetailDto(userDetailDto);
+			status.setAadhar(aadhar);
+			status.setPanCard(panCard);
+			status.setBlankCheque(blankCheque);
 			return status;
 			
 		}
