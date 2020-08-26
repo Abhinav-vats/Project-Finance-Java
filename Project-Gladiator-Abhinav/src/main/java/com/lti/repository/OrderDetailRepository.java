@@ -9,6 +9,7 @@ public interface OrderDetailRepository {
 	List<OrderDetail> getOrderList();
 	
 	Customer findById(int id);
+	Product findByProductId(int id);
 	
 	long countOrder();
 	

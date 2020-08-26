@@ -4,35 +4,27 @@ package com.lti.dto;
 public class OrderDetailDto {
 	
 	private int orderId;
-	private int user_id;
-	private int product_id;
+	private int userid;
+	private int productid;
 	private double pricePaid;
-	private int plan_id;
-	
-	
-	public int getPlan_id() {
-		return plan_id;
-	}
-	public void setPlan_id(int plan_id) {
-		this.plan_id = plan_id;
-	}
+	private int planid;
 	public int getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	public int getUser_id() {
-		return user_id;
+	public int getUserid() {
+		return userid;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
-	public int getProduct_id() {
-		return product_id;
+	public int getProductid() {
+		return productid;
 	}
-	public void setProduct_id(int product_id) {
-		this.product_id = product_id;
+	public void setProductid(int productid) {
+		this.productid = productid;
 	}
 	public double getPricePaid() {
 		return pricePaid;
@@ -40,6 +32,14 @@ public class OrderDetailDto {
 	public void setPricePaid(double pricePaid) {
 		this.pricePaid = pricePaid;
 	}
+	public int getPlanid() {
+		return planid;
+	}
+	public void setPlanid(int planid) {
+		this.planid = planid;
+	}
+	
+	
 	
 	
 

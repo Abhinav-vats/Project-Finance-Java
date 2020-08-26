@@ -31,9 +31,9 @@ public class OrderDetailController {
 			for(OrderDetail l: orderList ) {
 				OrderDetailDto ol = new OrderDetailDto();
 				ol.setOrderId(l.getOrderId());
-				ol.setPlan_id(l.getPlanType().getPlanId());
-				ol.setProduct_id(l.getProduct().getId());
-				ol.setUser_id(l.getCustomer().getId());
+				ol.setPlanid(l.getPlanType().getPlanId());
+				ol.setProductid(l.getProduct().getId());
+				ol.setUserid(l.getCustomer().getId());
 				ol.setPricePaid(l.getPricePaid());
 				o.add(ol);
 				

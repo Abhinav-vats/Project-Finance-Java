@@ -8,9 +8,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-
 import com.lti.entity.Customer;
 import com.lti.entity.OrderDetail;
+import com.lti.entity.Product;
 
 @Repository
 public class OrderDetailRepositoryImpl implements OrderDetailRepository{
@@ -30,6 +30,12 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository{
 	public Customer findById(int id) {
 		
 		return entityManager.find(Customer.class, id);
+	}
+	
+	@Override
+	public Product findByProductId(int id) {
+		
+		return entityManager.find(Product.class, id);
 	}
 	
 	@Transactional

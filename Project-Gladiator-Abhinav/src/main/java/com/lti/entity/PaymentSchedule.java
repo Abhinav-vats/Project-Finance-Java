@@ -31,7 +31,7 @@ public class PaymentSchedule {
 
 	@Column(name = "payment_status")
 	private String paymentStatus;
-	
+
 	@Column(name = "installment")
 	private double installment;
 
@@ -49,16 +49,6 @@ public class PaymentSchedule {
 	@ManyToOne
 	@JoinColumn(name = "plan_id")
 	private PlanType planType;
-	
-	
-
-	public double getInstallment() {
-		return installment;
-	}
-
-	public void setInstallment(double installment) {
-		this.installment = installment;
-	}
 
 	public int getPaymentId() {
 		return paymentId;
@@ -74,6 +64,10 @@ public class PaymentSchedule {
 
 	public String getPaymentStatus() {
 		return paymentStatus;
+	}
+
+	public double getInstallment() {
+		return installment;
 	}
 
 	public LocalDate getPaymentDate() {
@@ -106,6 +100,10 @@ public class PaymentSchedule {
 
 	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
+	}
+
+	public void setInstallment(double installment) {
+		this.installment = installment;
 	}
 
 	public void setPaymentDate(LocalDate paymentDate) {

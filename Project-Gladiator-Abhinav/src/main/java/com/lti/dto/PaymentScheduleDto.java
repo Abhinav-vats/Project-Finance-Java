@@ -1,8 +1,11 @@
 package com.lti.dto;
 
+import java.time.LocalDate;
 
 public class PaymentScheduleDto {
+	private int paymentId;
 	
+
 	public int getPaymentId() {
 		return paymentId;
 	}
@@ -10,6 +13,19 @@ public class PaymentScheduleDto {
 	public void setPaymentId(int paymentId) {
 		this.paymentId = paymentId;
 	}
+
+	private int monthCount;
+	
+	private String monthFor;
+	
+	private String paymentStatus;
+	
+	private int orderid;
+	
+	private int userid;
+	
+	private LocalDate paymentDate;
+	
 
 	public int getMonthCount() {
 		return monthCount;
@@ -35,35 +51,34 @@ public class PaymentScheduleDto {
 		this.paymentStatus = paymentStatus;
 	}
 
-	public int getCardSharedAmount() {
-		return cardSharedAmount;
+	
+
+	
+
+	public int getOrderid() {
+		return orderid;
 	}
 
-	public void setCardSharedAmount(int cardSharedAmount) {
-		this.cardSharedAmount = cardSharedAmount;
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
 	}
 
-	public int getLateFineCharged() {
-		return lateFineCharged;
+	public int getUserid() {
+		return userid;
 	}
 
-	public void setLateFineCharged(int lateFineCharged) {
-		this.lateFineCharged = lateFineCharged;
+	public void setUserid(int userid) {
+		this.userid = userid;
 	}
 
-	private int paymentId;
-	
-	private int monthCount;
-	
-	private String monthFor;
-	
-	private String paymentStatus;
-	
-	private int cardSharedAmount;
-	
-	private int lateFineCharged;
-	
-	
-	
+	public LocalDate getPaymentDate() {
+		return paymentDate;
+	}
 
+	public void setPaymentDate(LocalDate paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+	
+	//private int lateFineCharged;
+	
 }

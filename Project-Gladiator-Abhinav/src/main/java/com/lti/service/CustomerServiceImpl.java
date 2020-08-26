@@ -58,7 +58,7 @@ public class CustomerServiceImpl implements CustomerService {
 			customerRepository.delete(id);
 		}
 		else 
-			throw new CustomerServiceException("Detail Not Exist!");
+			throw new CustomerServiceException("Record Deleted!");
 		
 	}
 	
