@@ -8,39 +8,32 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-
 import com.lti.entity.Customer;
-import com.lti.entity.OrderDetail;
+import com.lti.entity.PaymentSchedule;
 
 @Repository
-public class OrderDetailRepositoryImpl implements OrderDetailRepository{
+public class PaymentScheduleRepositoryImpl implements PaymentScheduleRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	
 	@Transactional
-	public List<OrderDetail> getOrderList() {
+	public List<PaymentSchedule> getPaymentList() {
 		return entityManager
-				.createQuery("select o from OrderDetail as o")
+				.createNamedQuery("fetch-all-payments")
 				.getResultList();
 	}
 
 	@Override
 	public Customer findById(int id) {
-		
 		return entityManager.find(Customer.class, id);
 	}
 	
 	@Transactional
-	public long countOrder() {
+	public long countPayment() {
 		return (Long) entityManager
-				.createQuery("select count(o.id) from OrderDetail as o")
+				.createQuery("select count(ps.id) from PaymentSchedule as ps")
 				.getSingleResult();
-		
-		
 	}
-	
-	
 
 }

@@ -1,23 +1,21 @@
 package com.lti.status;
 
-
 import java.util.List;
 
-import com.lti.entity.Customer;
+import com.lti.dto.CustomerAdminDto;
+
 public class UserStatus {
 
-
-	
 	private int status;
 	private String message;
-	private List<Customer> userList;
+	private List<CustomerAdminDto> userList;
 	public int getStatus() {
 		return status;
 	}
 	public String getMessage() {
 		return message;
 	}
-	public List<Customer> getUserList() {
+	public List<CustomerAdminDto> getUserList() {
 		return userList;
 	}
 	public void setStatus(int status) {
@@ -26,8 +24,10 @@ public class UserStatus {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public void setUserList(List<Customer> userList) {
+	public void setUserList(List<CustomerAdminDto> userList) {
 		this.userList = userList;
 	}
+	
+	
 
 }

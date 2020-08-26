@@ -1,24 +1,30 @@
 package com.lti.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.NamedNativeQuery;
+
 
 
 
 @Entity
 @Table(name="order_detail")
-@NamedNativeQuery(name="fetch-all-order", query="select o from OrderDetail as o" )
+
 public class OrderDetail {
-	
 	@Id
-	@GeneratedValue
-	
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq")
+	@SequenceGenerator(sequenceName = "order_seq", allocationSize = 1, name = "order_seq")
 	@Column(name = "id")
 	private int orderId;
 	
@@ -33,8 +39,28 @@ public class OrderDetail {
 	@Column(name = "price_paid")
 	private int pricePaid;
 	
-	@Column(name = "plan_id")
-	private int planId;
+	@ManyToOne
+	@JoinColumn(name = "plan_id")
+	private PlanType planType;
+	
+	@OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL)
+	private List<PaymentSchedule> paymentSchedule;
+	
+	public List<PaymentSchedule> getPaymentSchedule() {
+		return paymentSchedule;
+	}
+
+	public void setPaymentSchedule(List<PaymentSchedule> paymentSchedule) {
+		this.paymentSchedule = paymentSchedule;
+	}
+
+	public PlanType getPlanType() {
+		return planType;
+	}
+
+	public void setPlanType(PlanType planType) {
+		this.planType = planType;
+	}
 
 	public int getOrderId() {
 		return orderId;
@@ -68,13 +94,9 @@ public class OrderDetail {
 		this.pricePaid = pricePaid;
 	}
 
-	public int getPlanId() {
-		return planId;
-	}
+	
+	
 
-	public void setPlanId(int planId) {
-		this.planId = planId;
-	}
 	
 
 }
