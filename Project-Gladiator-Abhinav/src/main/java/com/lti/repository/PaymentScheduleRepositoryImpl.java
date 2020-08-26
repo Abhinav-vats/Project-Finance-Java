@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lti.entity.Customer;
 import com.lti.entity.PaymentSchedule;
+import com.lti.entity.Product;
 
 @Repository
 public class PaymentScheduleRepositoryImpl implements PaymentScheduleRepository {
@@ -20,13 +21,19 @@ public class PaymentScheduleRepositoryImpl implements PaymentScheduleRepository 
 	@Transactional
 	public List<PaymentSchedule> getPaymentList() {
 		return entityManager
-				.createNamedQuery("fetch-all-payments")
+				.createQuery("select ps from PaymentSchedule as ps")
 				.getResultList();
 	}
 
 	@Override
 	public Customer findById(int id) {
 		return entityManager.find(Customer.class, id);
+	}
+	
+	@Override
+	public Product findByProductId(int id) {
+		
+		return entityManager.find(Product.class, id);
 	}
 	
 	@Transactional
