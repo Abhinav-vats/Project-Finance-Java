@@ -3,6 +3,9 @@ import com.lti.entity.*;
 
 import java.util.List;
 
+import java.time.LocalDate;
+
+import org.hibernate.type.ClassType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -10,10 +13,20 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 
+
+import com.lti.dto.OtpManagerDto;
+
 import com.lti.entity.Admin;
+import com.lti.entity.Customer;
 import com.lti.repository.AdminRepository;
+
+import com.lti.repository.CustomerRepository;
 import com.lti.repository.OrderDetailRepositoryImpl;
+import com.lti.repository.OtpRepositoryImpl;
+
+
 import com.lti.service.CustomerService;
+import com.lti.service.OtpServiceImpl;
 import com.lti.service.exception.CustomerServiceException;
 
 @SpringBootTest
@@ -21,6 +34,8 @@ import com.lti.service.exception.CustomerServiceException;
 @Rollback(false)
 public class CustomerTest {
 	
+	@Autowired
+	private CustomerRepository customerRepository;
 	@Autowired
 	private CustomerService customerService;
 	
@@ -62,8 +77,6 @@ public class CustomerTest {
 		
 		
 		
-		
-		
 	}
 	
 	
@@ -74,5 +87,24 @@ public class CustomerTest {
 		System.out.println(admin.getFirstName()+" "+admin.getLatsName());
 		
 	}
+	
 
-}
+	
+
+	@Test
+	void testFetchOtpbymail() {
+		
+		OtpManagerDto o = new OtpManagerDto();
+		o.setEmailId("abhi123up@gmail.com");
+		o.setOtpRecieved("771051");
+		OtpServiceImpl serv = new OtpServiceImpl();
+		OtpRepositoryImpl repo = new OtpRepositoryImpl();
+		System.out.println(repo.fetchOtpByEmailId(o.getEmailId()));
+		
+		
+		
+	}
+
+
+	
+	}
