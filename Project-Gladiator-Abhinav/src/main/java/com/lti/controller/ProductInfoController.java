@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.ProductIdDto;
 import com.lti.dto.ProductInfoDto;
+import com.lti.dto.PurchaseProductDto;
 import com.lti.entity.Product;
 import com.lti.service.ProductInfoService;
 import com.lti.service.exception.CustomerServiceException;
-import com.lti.service.exception.ProductServiceException;
+import com.lti.status.CustomerStatus;
 import com.lti.status.ProductInfoStatus;
 
 @RestController
@@ -43,6 +44,24 @@ public class ProductInfoController {
 		}
 	}
 	
+	@PostMapping("/purchase")
+	public CustomerStatus placeOrder(@RequestBody PurchaseProductDto purchaseProductDto) {
+		try {
+			String message =productInfoService.placeOrder(purchaseProductDto);
+			
+			CustomerStatus status = new CustomerStatus();
+			status.setStatus(100);
+			status.setMessage(message);
+			return status;
+		}
+		catch(CustomerServiceException e) {
+			CustomerStatus status = new CustomerStatus();
+			status.setStatus(102);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+			
+		}
+	}
 	
-	
-}
+
