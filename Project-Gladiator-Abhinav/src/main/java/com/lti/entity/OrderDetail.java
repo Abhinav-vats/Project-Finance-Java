@@ -37,7 +37,7 @@ public class OrderDetail {
 	private Product product;
 	
 	@Column(name = "price_paid")
-	private int pricePaid;
+	private double pricePaid;
 	
 	@ManyToOne
 	@JoinColumn(name = "plan_id")
@@ -46,6 +46,16 @@ public class OrderDetail {
 	@OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL)
 	private List<PaymentSchedule> paymentSchedule;
 	
+	
+	
+	public double getPricePaid() {
+		return pricePaid;
+	}
+
+	public void setPricePaid(double pricePaid) {
+		this.pricePaid = pricePaid;
+	}
+
 	public List<PaymentSchedule> getPaymentSchedule() {
 		return paymentSchedule;
 	}
@@ -86,13 +96,7 @@ public class OrderDetail {
 		this.product = product;
 	}
 
-	public int getPricePaid() {
-		return pricePaid;
-	}
-
-	public void setPricePaid(int pricePaid) {
-		this.pricePaid = pricePaid;
-	}
+	
 
 	
 	
