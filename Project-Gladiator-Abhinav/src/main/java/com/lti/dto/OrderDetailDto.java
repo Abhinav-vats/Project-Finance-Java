@@ -6,7 +6,7 @@ public class OrderDetailDto {
 	private int orderId;
 	private int user_id;
 	private int product_id;
-	private int pricePaid;
+	private double pricePaid;
 	private int plan_id;
 	
 	
@@ -34,10 +34,10 @@ public class OrderDetailDto {
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
-	public int getPricePaid() {
+	public double getPricePaid() {
 		return pricePaid;
 	}
-	public void setPricePaid(int pricePaid) {
+	public void setPricePaid(double pricePaid) {
 		this.pricePaid = pricePaid;
 	}
 	

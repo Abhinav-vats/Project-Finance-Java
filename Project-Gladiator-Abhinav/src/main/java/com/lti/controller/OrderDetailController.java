@@ -6,10 +6,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.lti.service.OrderDetailService;
+
+import java.util.ArrayList;
 import java.util.List;
 import com.lti.service.exception.OrderDetailServiceException;
 
 import com.lti.status.OrderDetailStatus;
+import com.lti.dto.OrderDetailDto;
 import com.lti.entity.*;
 
 @RestController
@@ -24,9 +27,20 @@ public class OrderDetailController {
 		try {
 			List<OrderDetail> orderList = orderdetailService.displayOrder();
 			OrderDetailStatus stat = new OrderDetailStatus();
+			List<OrderDetailDto> o = new ArrayList();
+			for(OrderDetail l: orderList ) {
+				OrderDetailDto ol = new OrderDetailDto();
+				ol.setOrderId(l.getOrderId());
+				ol.setPlan_id(l.getPlanType().getPlanId());
+				ol.setProduct_id(l.getProduct().getId());
+				ol.setUser_id(l.getCustomer().getId());
+				ol.setPricePaid(l.getPricePaid());
+				o.add(ol);
+				
+			}
 			stat.setStatus(106);
 			stat.setMessage("Order Page Loaded Successfully");
-			stat.setOrderList(orderList);
+			stat.setOrderList(o);
 			return stat;
 		}
 		catch(OrderDetailServiceException e) {
