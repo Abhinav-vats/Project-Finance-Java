@@ -35,6 +35,7 @@ public class AllotedCard {
 	@Column(name = "card_cvv_no")
 	private int cardCvvNo;
 
+
 	@Column(name = "card_no")
 	private String cardNo;
 

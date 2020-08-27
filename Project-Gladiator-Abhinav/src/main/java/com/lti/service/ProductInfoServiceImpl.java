@@ -38,7 +38,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 		orderDetail.setProduct(product);
 		orderDetail.setPlanType(planType);
 		orderDetail.setPricePaid(0);
-		productInfoRepository.addNewOrder(orderDetail);
+		
 		
 		AllotedCard allotedCard = productInfoRepository.fetchAllotedCardByCustomer(customer);
 		allotedCard.setCardCreditRemaining(allotedCard.getCardCreditRemaining()-product.getCostPerUnit());
@@ -65,6 +65,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
  		monthsList.add("DECEMBER");
  		String currentMonth=LocalDate.now().getMonth().toString();
  		int indexMonth = monthsList.indexOf(currentMonth);
+ 		List<PaymentSchedule> paymentList = new ArrayList<>();
  		for(int i=1;i<=planType.getDuration();i++) {
  			PaymentSchedule paymentSchedule = new PaymentSchedule();
  			paymentSchedule.setCustomer(customer);
@@ -72,7 +73,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
  			paymentSchedule.setPlanType(planType);
  			paymentSchedule.setPaymentStatus("false");
  			paymentSchedule.setMonthCount(i);
- 			paymentSchedule.setMonthFor(monthsList.get((indexMonth+i)%12));
+ 			paymentSchedule.setMonthFor(monthsList.get((indexMonth+i-1)%12));
  			if(i==planType.getDuration()) {
  				paymentSchedule.setInstallment(installment+rem);
  				
@@ -80,9 +81,14 @@ public class ProductInfoServiceImpl implements ProductInfoService {
  			else {
  				paymentSchedule.setInstallment(installment);
  			}
- 			
- 			productInfoRepository.addNewPaymentSchedule(paymentSchedule);
+ 			paymentList.add(paymentSchedule);
+ 			//productInfoRepository.addNewPaymentSchedule(paymentSchedule);
  		}
+ 		
+ 		orderDetail.setPaymentSchedule(paymentList);
+ 		
+ 		productInfoRepository.addNewOrder(orderDetail);
+ 		
         return "Booking Successfull!";	
 	}
 		else {

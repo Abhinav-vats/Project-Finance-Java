@@ -8,7 +8,14 @@ public class ProductInfoDto {
 	
 	private double costPerUnit;
 	
-	private  String imagePath;
+
+
+	private String imagePath;
+	
+	private int duration;
+	
+	private double emiStarting;
+	
 	
 	
 	public String getImagePath() {
@@ -19,10 +26,6 @@ public class ProductInfoDto {
 		this.imagePath = imagePath;
 	}
 
-	private int duration;
-	
-	private double emiStarting;
-	
 	public String getName() {
 		return name;
 	}
