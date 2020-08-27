@@ -27,18 +27,13 @@ public class AllotedCard {
 	@JoinColumn(name = "card_id")
 	private CardType cardType;
 
-<<<<<<< HEAD
-    @ManyToOne
-    @JoinColumn(name = "card_id")
-    private CardType cardType;
-=======
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private Customer customer;
 
 	@Column(name = "card_cvv_no")
 	private int cardCvvNo;
->>>>>>> branch 'master' of https://github.com/Abhinav-vats/Project-Finance-Java.git
 
 	@Column(name = "card_no")
 	private String cardNo;
