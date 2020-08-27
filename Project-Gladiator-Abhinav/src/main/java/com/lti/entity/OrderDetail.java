@@ -43,7 +43,7 @@ public class OrderDetail {
 	@JoinColumn(name = "plan_id")
 	private PlanType planType;
 	
-	@OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "orderDetail",cascade = CascadeType.ALL)
 	private List<PaymentSchedule> paymentSchedule;
 	
 	

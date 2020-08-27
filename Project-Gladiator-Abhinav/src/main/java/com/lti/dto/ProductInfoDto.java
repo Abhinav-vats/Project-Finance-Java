@@ -8,10 +8,22 @@ public class ProductInfoDto {
 	
 	private double costPerUnit;
 	
+	private String imagePath;
+	
 	private int duration;
 	
 	private double emiStarting;
 	
+	
+	
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
 	public String getName() {
 		return name;
 	}
