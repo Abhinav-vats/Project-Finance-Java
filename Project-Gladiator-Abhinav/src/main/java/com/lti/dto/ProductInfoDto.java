@@ -8,6 +8,8 @@ public class ProductInfoDto {
 	
 	private double costPerUnit;
 	
+
+
 	private String imagePath;
 	
 	private int duration;

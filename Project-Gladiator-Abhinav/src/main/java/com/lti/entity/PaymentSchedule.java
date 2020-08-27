@@ -23,6 +23,7 @@ public class PaymentSchedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_seq")
 	@SequenceGenerator(sequenceName = "payment_seq", allocationSize = 1, name = "payment_seq")
+
 	@Column(name = "id")
 	private int paymentId;
 

@@ -3,6 +3,7 @@ package com.lti.status;
 import java.util.List;
 
 import com.lti.helper.CardDashboardDetail;
+import com.lti.helper.OrderDashboard;
 import com.lti.helper.ProductDashboard;
 import com.lti.helper.TransactionDashboard;
 
@@ -15,6 +16,15 @@ public class DashboardStatus {
 	private List<ProductDashboard> productList;
 	
 	private List<TransactionDashboard> transactionList;
+	private List<OrderDashboard> orderList;
+
+	public List<OrderDashboard> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(List<OrderDashboard> orderList) {
+		this.orderList = orderList;
+	}
 
 	public int getStatus() {
 		return status;
