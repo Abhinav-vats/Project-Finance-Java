@@ -58,6 +58,7 @@ public class ProductInfoRepositoryImpl implements ProductInfoRepository{
 				.setParameter("ac",customer.getId())
 				.getSingleResult();
 	}
+	
 
 	@Transactional
 	@Override
