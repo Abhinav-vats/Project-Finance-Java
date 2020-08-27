@@ -33,7 +33,7 @@ public class OtpManagerController {
 		try {
 			String otp = otpService.otpGenerateAndAdd(verifyDto.getEmailId());
 			SimpleMailMessage message = new SimpleMailMessage();
-			message.setFrom("abhinavk.singh@lntinfotech.com");
+			message.setFrom("Nupur.Jain@lntinfotech.com");
 			message.setTo(verifyDto.getEmailId());
 			message.setSubject("no reply");
 			message.setText("You have recieved this mail for verification. Your verfication OTP is : "+otp);

@@ -27,12 +27,14 @@ public class AllotedCard {
 	@JoinColumn(name = "card_id")
 	private CardType cardType;
 
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private Customer customer;
 
 	@Column(name = "card_cvv_no")
 	private int cardCvvNo;
+
 
 	@Column(name = "card_no")
 	private String cardNo;
