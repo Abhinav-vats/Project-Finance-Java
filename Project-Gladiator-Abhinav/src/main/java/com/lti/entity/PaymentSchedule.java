@@ -5,10 +5,12 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +20,8 @@ import javax.persistence.Table;
 public class PaymentSchedule {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "payment_seq")
+	@SequenceGenerator(sequenceName = "payment_seq", allocationSize = 1, name = "payment_seq")
 
 	@Column(name = "id")
 	private int paymentId;
