@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lti.dto.CustomerIdDto;
 import com.lti.helper.CardDashboardDetail;
+import com.lti.helper.OrderDashboard;
 import com.lti.helper.ProductDashboard;
 import com.lti.helper.TransactionDashboard;
 
@@ -16,5 +17,7 @@ public interface DashboardService {
 	List<TransactionDashboard> fetchListForTransactionDashboard(CustomerIdDto customerIdDto);
 
 	String payPaymentScheduledById(int id);
+
+	List<OrderDashboard> fetchListOfOrderByCustomer(int id);
 
 }

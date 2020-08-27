@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.lti.entity.AllotedCard;
 import com.lti.entity.OrderDetail;
 import com.lti.entity.PaymentSchedule;
+import com.lti.helper.OrderDashboard;
 
 @Repository
 public class DashboardRepositoryImpl implements DashboardRepository {
@@ -93,6 +94,16 @@ public class DashboardRepositoryImpl implements DashboardRepository {
 		entityManager.merge(paymentSchedule);
 		
 	}
+
+	@Override
+	public List<OrderDetail> fetchOrderByCustomerId(int id) {
+		return entityManager
+				.createQuery("select o from OrderDetail as o where o.customer.id= :id")
+				.setParameter("id", id)
+				.getResultList();
+	}
+
+	
 
 	
 

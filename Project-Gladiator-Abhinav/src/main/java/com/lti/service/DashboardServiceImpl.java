@@ -13,6 +13,7 @@ import com.lti.entity.AllotedCard;
 import com.lti.entity.OrderDetail;
 import com.lti.entity.PaymentSchedule;
 import com.lti.helper.CardDashboardDetail;
+import com.lti.helper.OrderDashboard;
 import com.lti.helper.ProductDashboard;
 import com.lti.helper.TransactionDashboard;
 import com.lti.repository.DashboardRepository;
@@ -98,6 +99,25 @@ public class DashboardServiceImpl implements DashboardService {
 		} else {
 			throw new DashboardServiceException("This Payment is already completed");
 		}
+	}
+
+	@Override
+	public List<OrderDashboard> fetchListOfOrderByCustomer(int id) {
+		List<OrderDetail> orderList = dashboardRepository.fetchOrderByCustomerId(id);
+		List<OrderDashboard> orderDashboardList = new ArrayList<>();
+		for(OrderDetail orderDetail: orderList) {
+			OrderDashboard orderDashboard = new OrderDashboard();
+			orderDashboard.setAmountPaid( orderDetail.getPricePaid());
+			orderDashboard.setCategory(orderDetail.getProduct().getCategory());
+			orderDashboard.setOrderId(orderDetail.getOrderId());
+			orderDashboard.setProductName(orderDetail.getProduct().getName());
+			orderDashboard.setProductPrice( orderDetail.getProduct().getCostPerUnit());
+			orderDashboardList.add(orderDashboard);
+		}
+		
+		
+		
+		return orderDashboardList;
 	}
 
 }

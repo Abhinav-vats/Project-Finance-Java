@@ -6,6 +6,7 @@ import com.lti.dto.CustomerIdDto;
 import com.lti.entity.AllotedCard;
 import com.lti.entity.OrderDetail;
 import com.lti.entity.PaymentSchedule;
+import com.lti.helper.OrderDashboard;
 import com.lti.helper.ProductDashboard;
 
 public interface DashboardRepository {
@@ -23,6 +24,8 @@ public interface DashboardRepository {
 	boolean isPaymentSchedulePresent(int id);
 
 	void updatePaymentScheduleToPaid(int id);
+
+	List<OrderDetail> fetchOrderByCustomerId(int id);
 
 	
 

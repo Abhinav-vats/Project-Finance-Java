@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.dto.CustomerIdDto;
 import com.lti.helper.CardDashboardDetail;
+import com.lti.helper.OrderDashboard;
 import com.lti.helper.ProductDashboard;
 import com.lti.helper.TransactionDashboard;
 
@@ -30,12 +31,14 @@ public class DashboardController {
 		try {
 			CardDashboardDetail cardDashboardDetail = dashboardService.fetchReturnDetail(customerIdDto);
 			List<ProductDashboard> productDashboardList = dashboardService.fetchListForProductDashboard(customerIdDto);
-			List<TransactionDashboard> transactionDashboardList = dashboardService
-					.fetchListForTransactionDashboard(customerIdDto);
+			List<TransactionDashboard> transactionDashboardList = dashboardService.fetchListForTransactionDashboard(customerIdDto);
+			List<OrderDashboard> orderList = dashboardService.fetchListOfOrderByCustomer(customerIdDto.getId());
 			DashboardStatus dashboardStatus = new DashboardStatus();
 			dashboardStatus.setProductList(productDashboardList);
 			dashboardStatus.setCardDashboardDetail(cardDashboardDetail);
 			dashboardStatus.setTransactionList(transactionDashboardList);
+			dashboardStatus.setOrderList(orderList);
+			
 
 			dashboardStatus.setStatus(100);
 			dashboardStatus.setMessage("Fetched Successfully.");

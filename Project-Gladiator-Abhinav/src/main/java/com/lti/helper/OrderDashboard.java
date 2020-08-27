@@ -2,41 +2,45 @@ package com.lti.helper;
 
 public class OrderDashboard {
 
-	
-private int orderId;
-
+	private int orderId;
 	private String productName;
-	private int productPrice;
-	private int amountPaid;
+	private double productPrice;
+	private double amountPaid;
 	private String category;
+	
+	
+	public double getProductPrice() {
+		return productPrice;
+	}
+	public double getAmountPaid() {
+		return amountPaid;
+	}
+	public void setProductPrice(double productPrice) {
+		this.productPrice = productPrice;
+	}
+	public void setAmountPaid(double amountPaid) {
+		this.amountPaid = amountPaid;
+	}
 	public int getOrderId() {
 		return orderId;
-	}
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
 	}
 	public String getProductName() {
 		return productName;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-	public int getProductPrice() {
-		return productPrice;
-	}
-	public void setProductPrice(int productPrice) {
-		this.productPrice = productPrice;
-	}
-	public int getAmountPaid() {
-		return amountPaid;
-	}
-	public void setAmountPaid(int amountPaid) {
-		this.amountPaid = amountPaid;
-	}
+	
 	public String getCategory() {
 		return category;
 	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+	
 }
