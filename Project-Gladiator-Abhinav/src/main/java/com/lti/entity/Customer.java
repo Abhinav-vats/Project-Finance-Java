@@ -77,6 +77,9 @@ public class Customer {
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetail;
 	
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+	private List<PaymentSchedule> paymentSchedule;
+	
 	public List<OrderDetail> getOrderDetail() {
 		return orderDetail;
 	}
@@ -85,8 +88,7 @@ public class Customer {
 		this.orderDetail = orderDetail;
 	}
 
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	private List<PaymentSchedule> paymentSchedule;
+	
 
 	public List<PaymentSchedule> getPaymentSchedule() {
 		return paymentSchedule;
