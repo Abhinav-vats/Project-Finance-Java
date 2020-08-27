@@ -2,6 +2,7 @@ package com.lti.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,9 +21,17 @@ public class UploadRepositoryImpl implements UploadRepository {
 		return entityManager.find(Customer.class, userId);
 	}
 
+	@Transactional
 	@Override
-	public void saveDocument(Document document) {
+	public void addNewDocument(Document document) {
 		entityManager.merge(document);
+		
 	}
+
+	
+	
+	
+
+	
 
 }

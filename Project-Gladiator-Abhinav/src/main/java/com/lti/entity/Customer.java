@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -66,20 +67,29 @@ public class Customer {
 
 	@Column(name = "is_active")
 	private String isActive;
-	
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<AllotedCard> alloctedCards;
 
-	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-	private List<Document> documents;
-	
+	@OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+	private Document document;
+
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<OrderDetail> orderDetail;
-	
+
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<PaymentSchedule> paymentSchedule;
 	
+	
+
+	public Document getDocument() {
+		return document;
+	}
+
+	public void setDocument(Document document) {
+		this.document = document;
+	}
+
 	public List<OrderDetail> getOrderDetail() {
 		return orderDetail;
 	}
@@ -87,8 +97,6 @@ public class Customer {
 	public void setOrderDetail(List<OrderDetail> orderDetail) {
 		this.orderDetail = orderDetail;
 	}
-
-	
 
 	public List<PaymentSchedule> getPaymentSchedule() {
 		return paymentSchedule;
@@ -102,18 +110,8 @@ public class Customer {
 		return alloctedCards;
 	}
 
-	
-
-	public List<Document> getDocuments() {
-		return documents;
-	}
-
 	public void setAlloctedCards(List<AllotedCard> alloctedCards) {
 		this.alloctedCards = alloctedCards;
-	}
-
-	public void setDocuments(List<Document> documents) {
-		this.documents = documents;
 	}
 
 	public int getId() {

@@ -5,27 +5,53 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadDocumentDto {
 	
 	private int userId;
-	private String documentType;
-	private MultipartFile document;
+	
+	private MultipartFile aadharCard;
+	
+	private MultipartFile panCard;
+	
+	private MultipartFile blankCheque;
+	
+	
+	
+	
+	
+
+
 	public int getUserId() {
 		return userId;
 	}
-	public String getDocumentType() {
-		return documentType;
-	}
-	public MultipartFile getDocument() {
-		return document;
-	}
+
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public void setDocumentType(String documentType) {
-		this.documentType = documentType;
+
+	public MultipartFile getAadharCard() {
+		return aadharCard;
 	}
-	public void setDocument(MultipartFile document) {
-		this.document = document;
+
+	public MultipartFile getPanCard() {
+		return panCard;
 	}
+
+	public MultipartFile getBlankCheque() {
+		return blankCheque;
+	}
+
+	public void setAadharCard(MultipartFile aadharCard) {
+		this.aadharCard = aadharCard;
+	}
+
+	public void setPanCard(MultipartFile panCard) {
+		this.panCard = panCard;
+	}
+
+	public void setBlankCheque(MultipartFile blankCheque) {
+		this.blankCheque = blankCheque;
+	}
+
 	
+
 	
 
 }

@@ -7,6 +7,10 @@ public interface UploadRepository {
 
 	Customer fetchCustomerById(int userId);
 
-	void saveDocument(Document document);
+	void addNewDocument(Document document);
+
+	
+
+	
 
 }

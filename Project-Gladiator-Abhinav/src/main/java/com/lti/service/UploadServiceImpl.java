@@ -20,37 +20,16 @@ public class UploadServiceImpl implements UploadService {
 	private UploadRepository uploadRepository;
 
 	@Override
-	public String saveDocumentsFromDtoList(List<UploadDocumentDto> uploadDocumentDtos) {
-		for( UploadDocumentDto uploadDocumentDto : uploadDocumentDtos) {
-			Customer customer = uploadRepository.fetchCustomerById(uploadDocumentDto.getUserId());
-			Document document = new Document();
-			document.setDocumentType(uploadDocumentDto.getDocumentType());
-			document.setVerificationStatus("false");
-			document.setCustomer(customer);
-						
-			String ROOT_DIR = "d:/uploads";
-			String fileName = uploadDocumentDto.getDocument().getOriginalFilename();
-			String targetPath = ROOT_DIR + fileName ;
-			
-			try {
-				FileCopyUtils.copy(uploadDocumentDto.getDocument().getInputStream()	, new FileOutputStream(targetPath));
-			} 
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				//should return status indicating  failure
-				return e.getMessage();
-			}
-			
-			document.setDocumentPath(targetPath);
-			
-			uploadRepository.saveDocument(document);
-			
-			
-			
-		}
+	public void save(Document document, int userId) {
+		Customer customer = uploadRepository.fetchCustomerById(userId);
 		
-		return "Files added successfully";
-
+		document.setCustomer(customer);
+		
+		uploadRepository.addNewDocument(document);
+		
+		
 	}
+
+	
 
 }
