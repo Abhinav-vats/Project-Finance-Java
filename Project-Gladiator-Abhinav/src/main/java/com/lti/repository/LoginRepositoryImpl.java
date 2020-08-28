@@ -100,7 +100,7 @@ public class LoginRepositoryImpl implements LoginRepository {
 		return (Long) entityManager
 				.createQuery("select count(d.id) from Document as d where d.customer.id = :id")
 				.setParameter("id", id)
-				.getSingleResult()==3?true:false;
+				.getSingleResult()==1?true:false;
 		
 		
 		

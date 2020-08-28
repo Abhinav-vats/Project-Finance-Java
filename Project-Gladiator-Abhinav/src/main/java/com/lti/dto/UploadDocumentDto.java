@@ -3,26 +3,22 @@ package com.lti.dto;
 import org.springframework.web.multipart.MultipartFile;
 
 public class UploadDocumentDto {
-	
-	private int userId;
-	
+
+	private String userId;
+
 	private MultipartFile aadharCard;
-	
+
 	private MultipartFile panCard;
-	
+
 	private MultipartFile blankCheque;
-	
-	
-	
-	
-	
 
-
-	public int getUserId() {
+	
+	
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
@@ -49,9 +45,5 @@ public class UploadDocumentDto {
 	public void setBlankCheque(MultipartFile blankCheque) {
 		this.blankCheque = blankCheque;
 	}
-
-	
-
-	
 
 }

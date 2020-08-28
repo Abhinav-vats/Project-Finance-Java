@@ -68,7 +68,9 @@ public class UploadController {
 		document.setPanCard(customerPanCardFile);
 		document.setBlankCheque(customerBlankChequeFile);
 		
-		uploadService.save(document, uploadDocDto.getUserId());
+		int id = Integer.parseInt(uploadDocDto.getUserId());
+		
+		uploadService.save(document, id);
 		
 		CustomerStatus status = new CustomerStatus();
 		status.setStatus(100);

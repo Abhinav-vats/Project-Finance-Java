@@ -25,24 +25,7 @@ public class UserDetailController {
 	@PostMapping("/fetch")
 	public UserDetailStatus delete(@RequestBody CustomerIdDto customerIdDto) {
 		try {
-			//int customerId=Integer.parseInt(id);
-			Customer customer= userDetailService.findById(customerIdDto.getId());
-			UserDetailDto userDetailDto = new UserDetailDto();
-			BeanUtils.copyProperties(customer, userDetailDto);
-			
-			String aadhar = userDetailService.fetchAadhar(customerIdDto.getId());
-			String panCard = userDetailService.fetchPanCard(customerIdDto.getId());
-			String blankCheque = userDetailService.fetchBlankCheque(customerIdDto.getId());
-			
-			UserDetailStatus status = new UserDetailStatus();
-			status.setStatus(110);
-			status.setMessage("Fetched");
-			status.setUserDetailDto(userDetailDto);
-			status.setAadhar(aadhar);
-			status.setPanCard(panCard);
-			status.setBlankCheque(blankCheque);
-			return status;
-			
+			return userDetailService.findById(customerIdDto.getId());			
 		}
 		catch(CustomerServiceException e) {
 			UserDetailStatus status = new UserDetailStatus();
